@@ -213,7 +213,7 @@ setpsw_i();
     /*============================*/
     /*        check error         */
     /*============================*/
-    mtr_error_check();
+    /* mtr_error_check(); */
 
     /*==============================================================*/
     /*  coordinate transformation(UVW -> alpha&beta ->gamma-delta)  */
