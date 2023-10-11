@@ -19,7 +19,7 @@
 
 /******************************************************************************
 * File Name   : motor_parameter.h
-* Description : Definition of the target motor parameters 
+* Description : Definition of the target motor parameters
 ******************************************************************************/
 /******************************************************************************
 * History : 28.05.2020  Ver.1.00
@@ -33,9 +33,9 @@
 /*******************************************************************************
  Oriental motor: MRS-25T(200V/50Hz/0.4A/70W)
 ********************************************************************************/
-#define     MP_POLE_PAIRS                   (1)                      /* number of pole pairs */
-#define     MP_STATOR_RESISTANCE            (25.0f)                  /* stator resistance[ohm] */
-#define     MP_ROTOR_RESISTANCE             (12.5f)                  /* rotor resistance [ohm] */
+#define     MP_POLE_PAIRS                   (3)                      /* number of pole pairs */
+#define     MP_STATOR_RESISTANCE            (40.0f)                  /* stator resistance[ohm] */
+#define     MP_ROTOR_RESISTANCE             (5.5f)                  /* rotor resistance [ohm] */
 #define     MP_MUTUAL_INDUCTANCE            (1.00f)                  /* mutual inductance [H] */
 #define     MP_STATOR_LEAKAGE_INDUCTANCE    (0.080f)                 /* stator leakage inductance [H] */
 #define     MP_ROTOR_LEAKAGE_INDUCTANCE     (0.080f)                 /* rotor leakage inductance [H] */

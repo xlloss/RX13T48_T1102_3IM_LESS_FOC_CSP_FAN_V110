@@ -74,11 +74,11 @@
 #define     MTR_CURRENT_LPF_K            (CP_CURRENT_LPF_K)              /* current LPF gain */
 #define     MTR_OFFSET_LPF_K             (CP_OFFSET_LPF_K)               /* current offset LPF gain */
 
-#define     MTR_LIMIT_ID                 (3.0)                           /* gamma-axis current limit */
-#define     MTR_I_LIMIT_ID               (3.0)                           /* gamma-axis current PI integral term limit */
+#define     MTR_LIMIT_ID                 (5.0)                           /* gamma-axis current limit */
+#define     MTR_I_LIMIT_ID               (5.0)                           /* gamma-axis current PI integral term limit */
 
-#define     MTR_LIMIT_IQ                 (1.0)                           /* delta-axis current limit */
-#define     MTR_I_LIMIT_IQ               (1.0)                           /* speed PI integral term limit for delta-axis current */
+#define     MTR_LIMIT_IQ                 (5.0)                           /* delta-axis current limit */
+#define     MTR_I_LIMIT_IQ               (5.0)                           /* speed PI integral term limit for delta-axis current */
 
 #define     MTR_MAX_SPEED_RPM            (CP_MAX_SPEED_RPM)              /* max speed [rpm] (mechanical angle) */
 #define     MTR_MAX_SPEED_RAD            (MTR_MAX_SPEED_RPM*MTR_POLE_PAIRS*MTR_TWOPI/60)

@@ -42,7 +42,7 @@
 
 #define     MTR_AD_FREQ             (32.0f)                    /* A/D frequency [MHz] */
 #define     MTR_AD_SAMPLING_CYCLE   (45.0f)                    /* start-of-A/D-conversion delay time + sampling time [cycle] */
-#define     MTR_AD_SAMPLING_TIME    (MTR_AD_SAMPLING_CYCLE / MTR_AD_FREQ)      
+#define     MTR_AD_SAMPLING_TIME    (MTR_AD_SAMPLING_CYCLE / MTR_AD_FREQ)
                                                                /* A/D sampling time [us] */
 #define     MTR_AD_TIME_SET         ((uint16)(MTR_PWM_TIMER_FREQ * MTR_AD_SAMPLING_TIME))
                                                                /* A/D sampling time for duty calculation */
@@ -64,7 +64,7 @@
 #define     MTR_LED_ON              (0)                        /* active level of LED */
 #define     MTR_LED_OFF             (1)                        /* inactive level of LED */
 
-#define     MTR_INPUT_V             (220*1.41421356)           /* input voltage [V] */
+#define     MTR_INPUT_V             (110*1.41421356)           /* input voltage [V] */
 #define     MTR_IC_GATE_ON_V        ((int32)(MTR_INPUT_V*0.8f))
 #define     MTR_HALF_VDC            (MTR_INPUT_V/2.0f)         /* vdc/2 */
 #define     MTR_ADC_SCALING         (0x7FF)                    /* A/D offset */
@@ -72,7 +72,7 @@
 #define     MTR_VDC_SCALING         (686.0f/4095.0f)           /* for vdc scaling */
 #define     MTR_IPMTEMPERATURE_SCALING (5.0f/4095.0f)          /* for IPM temperature scaling */
 
-#define     MTR_OVERCURRENT_LIMIT   (3.0f)                     /* over current limit [A] */
+#define     MTR_OVERCURRENT_LIMIT   (5.0f)                     /* over current limit [A] */
 #define     MTR_OVERVOLTAGE_LIMIT   (420.0f)                   /* over voltage limit [V] */
 #define     MTR_UNDERVOLTAGE_LIMIT  (0.0f)                     /* under voltage limit [V] */
 #define     MTR_OVERIPMTEMPERATURE_LIMIT (3)                   /* over temperature limit [V] (3[V]=60Å}10[Åé]) */
