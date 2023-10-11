@@ -163,6 +163,11 @@ clrpsw_i();
     mtr_get_iuiviwvdc(&g_f4_iu_ad, &g_f4_iv_ad, &g_f4_iw_ad, &g_f4_vdc_ad);
 setpsw_i();
 
+#if ADC_WORKAROUND
+    g_f4_iu_ad = g_f4_iu_ad / 1000;
+    g_f4_iv_ad = g_f4_iv_ad / 1000;
+    g_f4_iw_ad = g_f4_iw_ad / 1000;
+#else
     g_f4_iu_ad = g_f4_iu_ad - MTR_ADC_SCALING;
     g_f4_iv_ad = g_f4_iv_ad - MTR_ADC_SCALING;
     g_f4_iw_ad = g_f4_iw_ad - MTR_ADC_SCALING;
@@ -170,6 +175,7 @@ setpsw_i();
     g_f4_iu_ad = g_f4_iu_ad * MTR_CURRENT_SCALING;          /* U-phase current */
     g_f4_iv_ad = g_f4_iv_ad * MTR_CURRENT_SCALING;          /* V-phase current */
     g_f4_iw_ad = g_f4_iw_ad * MTR_CURRENT_SCALING;          /* W-phase current */
+#endif
 
     /*** current offset adjustment ***/
     if (g_f4_offset_calc_time == g_u2_cnt_adjust)
