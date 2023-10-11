@@ -49,7 +49,7 @@
 #define     CP_ID_CONST_TIME           (500.0f)                /* gamma-axis current/flux stabilization wait time [ms] */
 #define     CP_ACCEL_MODE0             (0.1)                   /* speed command acceleration step [rad/s] */
 #define     CP_FLUCTUATION_LIMIT       (200.0f)                /* speed fluctuation limit */
-#define     CP_DELAY                   (1.0f)                  /* g_f4_angle_compensation = CP_DELAY * MTR_CTRL_PERIOD */
+#define     CP_DELAY                   (2.0f)                  /* g_f4_angle_compensation = CP_DELAY * MTR_CTRL_PERIOD */
 #define     CP_OFFSET_CALC_TIME        (256)                   /* current offset calculation time [ms] */
 #define     CP_VOLTAGE_DROP            (8.0f)                  /* voltage drop caused by dead time and Vce [V] */
 #define     CP_VOLTAGE_DROP_K          (0.0f)                  /* voltage drop corrective gain [V/A] */
