@@ -138,6 +138,7 @@ void mtr_init_io_port(void)
     PORTB.PODR.BIT.B3 = 0;                              /* PFC_G1 = "L" */
     PORTB.PDR.BIT.B2 = 1;                               /* output mode */
     PORTB.PDR.BIT.B3 = 1;                               /* output mode */
+    PORTB.PDR.BIT.B5 = 0;                               /* DIR input  mode */
 
     /*************** unused ***************/
     PORT1.PODR.BIT.B0 = 1;

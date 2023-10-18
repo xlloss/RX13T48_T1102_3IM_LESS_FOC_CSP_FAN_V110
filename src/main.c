@@ -45,6 +45,7 @@
 * Private global variables and functions
 ******************************************************************************/
 uint8    g_u1_motor_status;                 /* motor status */
+uint8    g_u1_motor_dir_sw;
 int16    com_s2_mode_system;                /* system mode */
 int16    g_s2_mode_system;                  /* system mode */
 int16    com_s2_direction;                  /* rotational direction (0:CW ,1:CCW) */
@@ -112,6 +113,7 @@ void main(void)
 {
     float32 vr1_to_rpm;
     float32 rpm_to_rad;
+    uint8_t motor_dir;
 clrpsw_i();                                                         /* interrupt disable */
     R_MTR_InitHardware();                                           /* initialize peripheral function */
     init_ui();                                                      /* initialize peripheral function for user interface */
@@ -133,11 +135,11 @@ setpsw_i();
 
         rpm_to_rad = vr1_to_rpm * MTR_POLE_PAIRS * MTR_RPM_RAD;
 
-        if (MTR_CW == ics_input.s2_direction) {
+        motor_dir = get_sw1();
+        if (MTR_CW == motor_dir)
             g_f4_ref_speed_rad = rpm_to_rad;
-        } else if (MTR_CCW == ics_input.s2_direction) {
+        else
             g_f4_ref_speed_rad = -rpm_to_rad;
-        }
 
         clear_wdt();                                                /* watch dog timer clear */
     }
@@ -158,6 +160,8 @@ void ics_ui(void)
 
     com_s2_get_vr1 = get_vr1();
     com_f4_vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+    g_u1_motor_dir_sw = get_sw1();
+
     /*============================*/
     /*      get ICS value         */
     /*============================*/
@@ -304,6 +308,7 @@ void ics_ui(void)
 void software_init(void)
 {
     g_u1_motor_status              = 0;
+    g_u1_motor_dir_sw              = 0;
     com_s2_mode_system             = 0;
     g_s2_mode_system               = 0;
     com_s2_get_vr1                 = 0;
