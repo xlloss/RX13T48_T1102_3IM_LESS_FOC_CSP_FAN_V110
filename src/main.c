@@ -49,6 +49,8 @@ int16    com_s2_mode_system;                /* system mode */
 int16    g_s2_mode_system;                  /* system mode */
 int16    com_s2_direction;                  /* rotational direction (0:CW ,1:CCW) */
 int16    com_s2_ref_speed_rpm;              /* motor speed reference [rpm] (electrical) */
+int16    com_s2_get_vr1;
+float32  com_f4_vr1_to_rpm;
 float32  com_f4_kp_speed;                   /* proportional gain for speed PI control */
 float32  com_f4_ki_speed;                   /* integral gain for speed PI control */
 float32  com_f4_kp_iq;                      /* proportional gain for delta-axis current PI control */
@@ -89,6 +91,7 @@ static void       software_init(void);
 unsigned long dtc_table[256];
 #pragma section
 
+#define ADC_BIT_N 12
 /*******************************************************************************
  Exported global variables and functions (to be accessed by other files)
  *******************************************************************************/
@@ -98,6 +101,7 @@ void main (void);
 uint32 dummy_ram;     /* Dummy ram for End of RAM */
 #pragma section
 
+extern volatile float32 g_f4_ref_speed_rad;
 /******************************************************************************
 * Function Name : main
 * Description   : Initialization and main routine
@@ -106,6 +110,8 @@ uint32 dummy_ram;     /* Dummy ram for End of RAM */
 ******************************************************************************/
 void main(void)
 {
+    float32 vr1_to_rpm;
+    float32 rpm_to_rad;
 clrpsw_i();                                                         /* interrupt disable */
     R_MTR_InitHardware();                                           /* initialize peripheral function */
     init_ui();                                                      /* initialize peripheral function for user interface */
@@ -122,6 +128,16 @@ setpsw_i();
     while (1)
     {
         ics_ui();                                                   /* user interface using ICS */
+
+        vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+
+        rpm_to_rad = vr1_to_rpm * MTR_POLE_PAIRS * MTR_RPM_RAD;
+
+        if (MTR_CW == ics_input.s2_direction) {
+            g_f4_ref_speed_rad = rpm_to_rad;
+        } else if (MTR_CCW == ics_input.s2_direction) {
+            g_f4_ref_speed_rad = -rpm_to_rad;
+        }
 
         clear_wdt();                                                /* watch dog timer clear */
     }
@@ -140,9 +156,12 @@ void ics_ui(void)
 {
     int16 s2_temp;
 
+    com_s2_get_vr1 = get_vr1();
+    com_f4_vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
     /*============================*/
     /*      get ICS value         */
     /*============================*/
+    com_s2_ref_speed_rpm = (com_s2_get_vr1 * CP_MAX_SPEED_RPM ) >> ADC_BIT_N;
     /***** limit variable *****/
     if (com_s2_ref_speed_rpm > com_s2_max_speed_rpm)
     {
@@ -287,6 +306,8 @@ void software_init(void)
     g_u1_motor_status              = 0;
     com_s2_mode_system             = 0;
     g_s2_mode_system               = 0;
+    com_s2_get_vr1                 = 0;
+    com_f4_vr1_to_rpm              = 0;
     com_s2_direction               = 0;
     com_s2_ref_speed_rpm           = 0;
     com_f4_kp_speed                = SPEED_PI_KP;
