@@ -123,7 +123,7 @@ clrpsw_i();                                                         /* interrupt
 setpsw_i();                                                         /* interrupt enable */
     R_MTR_ExecEvent(MTR_EVENT_RESET);                               /* execute reset event */
 clrpsw_i();                                                         /* interrupt disable */
-    R_MTR_ChargeCapacitor();                                        /* wait for charging capacitor */
+    /* R_MTR_ChargeCapacitor(); */                                        /* wait for charging capacitor */
 setpsw_i();
 
     /*** main routine ***/
