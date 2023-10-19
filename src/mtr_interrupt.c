@@ -69,6 +69,7 @@ extern volatile uint8    g_u1_error_status;         /* error status */
 extern volatile uint8    g_u1_cnt_ics;              /* counter for period of calling "ics_watchpoint" */
 /*********************/
 
+extern volatile int16    g_boot_delay;
 extern volatile float32  g_f4_vdc_ad;               /* inverter bus voltage */
 extern volatile float32  g_f4_vd_ref;               /* gamma-axis output voltage command */
 extern volatile float32  g_f4_vq_ref;               /* delta-axis output voltage command */
@@ -462,5 +463,8 @@ setpsw_i();
     }
 
     mtr_clear_cmt0_flag();
+
+    if (g_boot_delay > 0)
+        g_boot_delay--;
 }
 

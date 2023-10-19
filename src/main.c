@@ -44,8 +44,10 @@
 /******************************************************************************
 * Private global variables and functions
 ******************************************************************************/
+int16    g_boot_delay;
 uint8    g_u1_motor_status;                 /* motor status */
 uint8    g_u1_motor_dir_sw;
+uint8    g_u1_motor_enable;
 int16    com_s2_mode_system;                /* system mode */
 int16    g_s2_mode_system;                  /* system mode */
 int16    com_s2_direction;                  /* rotational direction (0:CW ,1:CCW) */
@@ -113,7 +115,7 @@ void main(void)
 {
     float32 vr1_to_rpm;
     float32 rpm_to_rad;
-    uint8_t motor_dir;
+    uint8_t motor_dir, motor_enable;
 clrpsw_i();                                                         /* interrupt disable */
     R_MTR_InitHardware();                                           /* initialize peripheral function */
     init_ui();                                                      /* initialize peripheral function for user interface */
@@ -141,6 +143,32 @@ setpsw_i();
         else
             g_f4_ref_speed_rad = -rpm_to_rad;
 
+        if (g_boot_delay != 0) {
+            clear_wdt();
+            continue;
+        }
+
+        if (get_motor_enable())
+            R_MTR_ExecEvent(MTR_MODE_RUN);
+        else
+            R_MTR_ExecEvent(MTR_MODE_STOP);
+
+        motor_enable = get_motor_enable();
+
+        if (g_s2_mode_system != motor_enable) {
+            g_s2_mode_system = motor_enable;
+            R_MTR_ExecEvent((uint8)g_s2_mode_system);
+        }
+
+        g_u1_motor_status = R_MTR_GetStatus();
+
+        if (MTR_EVENT_RESET == g_s2_mode_system) {
+            if (MTR_MODE_STOP == g_u1_motor_status)
+                software_init();
+            else if (MTR_MODE_ERROR == g_u1_motor_status)
+                g_s2_mode_system   = MTR_MODE_ERROR;
+        }
+
         clear_wdt();                                                /* watch dog timer clear */
     }
 }
@@ -162,6 +190,7 @@ void ics_ui(void)
     com_f4_vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
     g_u1_motor_dir_sw = get_sw1();
 
+    g_u1_motor_enable = get_motor_enable();
     /*============================*/
     /*      get ICS value         */
     /*============================*/
@@ -251,32 +280,6 @@ void ics_ui(void)
         g_s2_enable_write ^= 1;                                 /* change every time 0 and 1 */
     }
 
-    /*==============================*/
-    /*        execute event         */
-    /*==============================*/
-    s2_temp = com_s2_mode_system;
-
-    if (g_s2_mode_system != s2_temp)
-    {
-        g_s2_mode_system = s2_temp;
-        R_MTR_ExecEvent((uint8)g_s2_mode_system);
-    }
-
-    g_u1_motor_status = R_MTR_GetStatus();              /* get status of motor control system */
-
-    if (MTR_EVENT_RESET == g_s2_mode_system)
-    {
-        if (MTR_MODE_STOP == g_u1_motor_status)
-        {
-            software_init();                            /* initialize private global variables for reset event */
-        }
-        else if (MTR_MODE_ERROR == g_u1_motor_status)
-        {
-            g_s2_mode_system   = MTR_MODE_ERROR;
-            com_s2_mode_system = MTR_MODE_ERROR;
-        }
-    }
-
     /***** LED control *****/
     if (g_u1_motor_status == MTR_MODE_STOP)             /* check motor status */
     {
@@ -307,7 +310,9 @@ void ics_ui(void)
 ******************************************************************************/
 void software_init(void)
 {
+    g_boot_delay                   = 1000;
     g_u1_motor_status              = 0;
+    g_u1_motor_enable              = 0;
     g_u1_motor_dir_sw              = 0;
     com_s2_mode_system             = 0;
     g_s2_mode_system               = 0;
