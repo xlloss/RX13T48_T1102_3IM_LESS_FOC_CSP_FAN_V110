@@ -136,7 +136,7 @@ setpsw_i();
         vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
 
         rpm_to_rad = vr1_to_rpm * MTR_POLE_PAIRS * MTR_RPM_RAD;
-
+        rpm_to_rad = (rpm_to_rad < CP_MIN_SPEED_RPM) ? CP_MIN_SPEED_RPM : rpm_to_rad;
         motor_dir = get_sw1();
         if (MTR_CW == motor_dir)
             g_f4_ref_speed_rad = rpm_to_rad;

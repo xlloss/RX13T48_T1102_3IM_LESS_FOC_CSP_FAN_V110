@@ -43,7 +43,7 @@
 #define     CP_CURRENT_LPF_K           (1.0)                   /* current LPF gain */
 #define     CP_OFFSET_LPF_K            (0.1)                   /* current offset LPF gain */
 #define     CP_MAX_SPEED_RPM           (1100)                  /* max speed [rpm] (mechanical angle) */
-#define     CP_MIN_SPEED_RPM           (0)                     /* min speed [rpm] (mechanical angle) */
+#define     CP_MIN_SPEED_RPM           (100)                   /* min speed [rpm] (mechanical angle) */
 #define     CP_CTRL_REF_ID             (0.4f)                  /* gamma-axis current reference [A] */
 #define     CP_BOOT_ID_UP_TIME         (100.0f)                /* rise time at gamma-axis current startup [ms] */
 #define     CP_ID_CONST_TIME           (500.0f)                /* gamma-axis current/flux stabilization wait time [ms] */
