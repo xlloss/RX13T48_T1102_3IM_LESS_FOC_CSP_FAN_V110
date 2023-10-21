@@ -59,6 +59,9 @@ static void mtr_over_current_interrupt(void);
 /******************************************************************************
 * Exported global variables
 ******************************************************************************/
+extern volatile float32 g_f4_iu_ad_org;
+extern volatile float32 g_f4_iv_ad_org;
+extern volatile float32 g_f4_iw_ad_org;
 /* for sequence control */
 extern volatile uint8    g_u1_mode_system;          /* system mode */
 extern volatile uint16   g_u2_run_mode;             /* run mode */
@@ -162,12 +165,17 @@ static void mtr_mtu4_interrupt(void)
     /*=============================================*/
 clrpsw_i();
     mtr_get_iuiviwvdc(&g_f4_iu_ad, &g_f4_iv_ad, &g_f4_iw_ad, &g_f4_vdc_ad);
+
+    g_f4_iu_ad_org = g_f4_iu_ad;
+    g_f4_iv_ad_org = g_f4_iv_ad;
+    g_f4_iw_ad_org = g_f4_iw_ad;
+
 setpsw_i();
 
 #if ADC_WORKAROUND
-    g_f4_iu_ad = g_f4_iu_ad / 1000;
-    g_f4_iv_ad = g_f4_iv_ad / 1000;
-    g_f4_iw_ad = g_f4_iw_ad / 1000;
+    g_f4_iu_ad = (g_f4_iu_ad / 4095.0f) * 5.0;
+    g_f4_iv_ad = (g_f4_iv_ad / 4095.0f) * 5.0;
+    g_f4_iw_ad = (g_f4_iw_ad / 4095.0f) * 5.0;
 #else
     g_f4_iu_ad = g_f4_iu_ad - MTR_ADC_SCALING;
     g_f4_iv_ad = g_f4_iv_ad - MTR_ADC_SCALING;
@@ -210,11 +218,10 @@ setpsw_i();
     }
 
     g_f4_vdc_ad = g_f4_vdc_ad * MTR_VDC_SCALING;            /* Vdc */
-
     /*============================*/
     /*        check error         */
     /*============================*/
-    /* mtr_error_check(); */
+    mtr_error_check();
 
     /*==============================================================*/
     /*  coordinate transformation(UVW -> alpha&beta ->gamma-delta)  */
@@ -335,7 +342,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.5f * g_f4_vdc_ad;
+    g_f4_inv_limit = 0.15f * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {

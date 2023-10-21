@@ -47,6 +47,9 @@ volatile uint8    g_u1_error_status;                /* error status */
 /****** for ICS ******/
 volatile uint8    g_u1_cnt_ics;                     /* counter for period of calling "ics_watchpoint" */
 /*********************/
+volatile float32 g_f4_iu_ad_org;
+volatile float32 g_f4_iv_ad_org;
+volatile float32 g_f4_iw_ad_org;
 
 volatile float32  g_f4_vdc_ad;                      /* inverter bus voltage */
 volatile float32  g_f4_vd_ref;                      /* gamma-axis output voltage command */
@@ -79,6 +82,7 @@ volatile float32  g_f4_ref_stator_speed_rad;        /* stator speed command */
 volatile float32  g_f4_slip_speed_rad;              /* slip speed */
 volatile float32  g_f4_slip_k;                      /* slip speed gain */
 volatile float32  g_f4_speed_rad;                   /* calculated speed value */
+volatile float32  g_f4_speed_rad_limit;
 volatile float32  g_f4_ref_speed_rad_pi;            /* speed command for PI control */
 volatile float32  g_f4_ref_speed_rad;               /* speed command */
 volatile float32  g_f4_angle_rad;                   /* stator interlinkage flux angle */
@@ -258,6 +262,9 @@ static uint8 mtr_act_reset(uint8 u1_state)
 /****** for ICS ******/
     g_u1_cnt_ics = 0;
 /*********************/
+    g_f4_iu_ad_org = 0;
+    g_f4_iv_ad_org = 0;
+    g_f4_iw_ad_org = 0;
 
     g_f4_vdc_ad = 0;
     g_f4_vd_ref = 0;
@@ -614,7 +621,7 @@ void mtr_set_variables(void)
 
     /* voltage drop caused by dead time and Vce */
      g_f4_voltage_drop = ics_input_buff.f4_voltage_drop;
-    
+
     /* voltage drop corrective gain */
      g_f4_voltage_drop_k = ics_input_buff.f4_voltage_drop_k;
 
@@ -687,7 +694,7 @@ void R_MTR_IcsInput(MTR_ICS_INPUT *ics_input)
 
     /* voltage drop caused by dead time and Vce */
     ics_input_buff.f4_voltage_drop = ics_input->f4_voltage_drop;
-    
+
     /* voltage drop corrective gain */
     ics_input_buff.f4_voltage_drop_k = ics_input->f4_voltage_drop_k;
 

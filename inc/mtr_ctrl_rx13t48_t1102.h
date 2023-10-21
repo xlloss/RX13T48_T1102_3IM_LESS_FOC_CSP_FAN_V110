@@ -69,12 +69,16 @@
 #define     MTR_HALF_VDC            (MTR_INPUT_V/2.0f)         /* vdc/2 */
 #define     MTR_ADC_SCALING         (0x7FF)                    /* A/D offset */
 #define     MTR_CURRENT_SCALING     (100.0f/4095.0f)           /* for current scaling */
-#define     MTR_VDC_SCALING         (686.0f/4095.0f)           /* for vdc scaling */
+#define     MTR_VDC_SCALING         (510.0f/4095.0f)           /* for vdc scaling */
 #define     MTR_IPMTEMPERATURE_SCALING (5.0f/4095.0f)          /* for IPM temperature scaling */
 
-#define     MTR_OVERCURRENT_LIMIT   (5.0f)                     /* over current limit [A] */
-#define     MTR_OVERVOLTAGE_LIMIT   (420.0f)                   /* over voltage limit [V] */
-#define     MTR_UNDERVOLTAGE_LIMIT  (0.0f)                     /* under voltage limit [V] */
+#define     MTR_OVERCURRENT_LIMIT   (5.00f)                  /* over current limit [A] */
+
+#define     MTR_OVERVOLTAGE_LIMIT   (311.0f)                   /* over voltage limit [V] */
+                                                               /* 220 * 1.414 = 311 */
+
+#define     MTR_UNDERVOLTAGE_LIMIT  (95.0f)                    /* under voltage limit [V] */
+                                                               /* 110 * 1.414 = 113, 95 is buffer  */
 #define     MTR_OVERIPMTEMPERATURE_LIMIT (3)                   /* over temperature limit [V] (3[V]=60Å}10[Åé]) */
 
 #define     MTR_ENABLE              (PORTB.PIDR.BIT.B2)        /* motor enable 0: enable, 1: disable */
