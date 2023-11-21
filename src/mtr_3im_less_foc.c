@@ -289,10 +289,10 @@ static uint8 mtr_act_reset(uint8 u1_state)
     g_f4_kp_speed = MTR_SPEED_PI_KP;
     g_f4_ki_speed = MTR_SPEED_PI_KI;
     g_f4_lim_id = MTR_LIMIT_ID;
-    g_f4_lim_rotor_speed_rad = MTR_LIMIT_ROTOR_SPEED_RAD;
+    g_f4_lim_rotor_speed_rad = mtr_limit_rotor_speed_rad;
     g_f4_lim_iq = MTR_LIMIT_IQ;
     g_f4_ilim_id = MTR_I_LIMIT_ID;
-    g_f4_ilim_rotor_speed_rad = MTR_I_LIMIT_ROTOR_SPEED_RAD;
+    g_f4_ilim_rotor_speed_rad = mtr_i_limit_rotor_speed_rad;
     g_f4_ilim_iq = MTR_I_LIMIT_IQ;
     g_f4_id_ref = 0;
     g_f4_id_ref2 = 0;
@@ -304,8 +304,8 @@ static uint8 mtr_act_reset(uint8 u1_state)
     g_f4_ref_speed_rad_pi = 0;
     g_f4_ref_speed_rad = 0;
     g_f4_angle_rad = 0;
-    g_f4_max_speed_rad = MTR_MAX_SPEED_RAD;
-    g_f4_min_speed_rad = MTR_MIN_SPEED_RAD;
+    g_f4_max_speed_rad = mtr_max_speed_rad;
+    g_f4_min_speed_rad = mtr_min_speed_rad;
     g_f4_refu = 0;
     g_f4_refv = 0;
     g_f4_refw = 0;
@@ -551,12 +551,12 @@ void mtr_set_variables(void)
     /* reference speed */
     if (MTR_CW == g_u1_dir_buff)
     {
-        g_f4_ref_speed_rad = (float32)ics_input_buff.s2_ref_speed * MTR_POLE_PAIRS * MTR_RPM_RAD;
+        g_f4_ref_speed_rad = (float32)ics_input_buff.s2_ref_speed * mtr_pole_pairs * MTR_RPM_RAD;
                                                         /* [rpm]->[rad/s] */
     }
     else if (MTR_CCW == g_u1_dir_buff)
     {
-        g_f4_ref_speed_rad = - (float32)ics_input_buff.s2_ref_speed * MTR_POLE_PAIRS * MTR_RPM_RAD;
+        g_f4_ref_speed_rad = - (float32)ics_input_buff.s2_ref_speed * mtr_pole_pairs * MTR_RPM_RAD;
                                                         /* [rpm]->[rad/s] */
     }
 
@@ -589,10 +589,10 @@ void mtr_set_variables(void)
     g_f4_offset_lpf_k = ics_input_buff.f4_offset_lpf_k;
 
     /* max speed */
-    g_f4_max_speed_rad = (float32)ics_input_buff.s2_max_speed * MTR_POLE_PAIRS * MTR_RPM_RAD;
+    g_f4_max_speed_rad = (float32)ics_input_buff.s2_max_speed * mtr_pole_pairs * MTR_RPM_RAD;
                                                         /* [rpm]->[rad/s] */
 
-    g_f4_min_speed_rad = (float32)ics_input_buff.s2_min_speed * MTR_POLE_PAIRS * MTR_RPM_RAD;
+    g_f4_min_speed_rad = (float32)ics_input_buff.s2_min_speed * mtr_pole_pairs * MTR_RPM_RAD;
                                                         /* [rpm]->[rad/s] */
 
     g_f4_lim_rotor_speed_rad = g_f4_max_speed_rad;
@@ -722,7 +722,7 @@ float32 R_MTR_GetSpeed(void)
 {
     float32 f4_speed_rpm;
 
-    f4_speed_rpm = (g_f4_speed_rad / (MTR_RPM_RAD * MTR_POLE_PAIRS));
+    f4_speed_rpm = (g_f4_speed_rad / (MTR_RPM_RAD * mtr_pole_pairs));
 
     return (f4_speed_rpm);
 }
@@ -803,7 +803,7 @@ void mtr_error_check(void)
     /*     over speed error check     */
     /*================================*/
     f4_temp0 = fabsf(g_f4_speed_rad);
-    if (f4_temp0 > MTR_SPEED_LIMIT)
+    if (f4_temp0 > mtr_speed_limit)
     {
         R_MTR_ExecEvent(MTR_EVENT_ERROR);               /* execute error event */
         g_u1_error_status = MTR_OVER_SPEED_ERROR;       /* over speed error */

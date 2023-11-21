@@ -77,4 +77,13 @@
 ******************************************************************************/
 void       main(void);                                     /* main function */
 
+extern uint8    mp_pole_pairs;
+extern uint8    mtr_pole_pairs;
+extern float32  mtr_max_speed_rad;
+extern float32  mtr_min_speed_rad;
+extern float32  mtr_speed_limit;
+extern float32  mtr_limit_rotor_speed_rad;
+extern float32  mtr_i_limit_rotor_speed_rad;
+
+
 #endif /* MAIN_H */

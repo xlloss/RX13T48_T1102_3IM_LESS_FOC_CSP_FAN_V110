@@ -45,6 +45,15 @@
 * Private global variables and functions
 ******************************************************************************/
 int16    g_boot_delay;
+uint8    mp_pole_pairs;
+uint8    mtr_pole_pairs;
+float32  mtr_max_speed_rad;
+float32  mtr_min_speed_rad;
+float32  mtr_speed_limit;
+float32  mtr_limit_rotor_speed_rad;
+float32  mtr_i_limit_rotor_speed_rad;
+
+uint8    g_u1_pole_pairs;                   /* MP_POLE_PAIRS */
 uint8    g_u1_motor_status;                 /* motor status */
 uint8    g_u1_motor_dir_sw;
 uint8    g_u1_motor_enable;
@@ -105,6 +114,22 @@ uint32 dummy_ram;     /* Dummy ram for End of RAM */
 #pragma section
 
 extern volatile float32 g_f4_ref_speed_rad;
+
+void switch_pole()
+{
+    #define POLE_PAIRS_2 2
+    #define POLE_PAIRS_3 3
+    mp_pole_pairs = MTR_PORT_POLE_PAIRS == 1 ? POLE_PAIRS_2 : POLE_PAIRS_3;
+    mtr_pole_pairs = mp_pole_pairs;
+    mtr_max_speed_rad = (MTR_MAX_SPEED_RPM * mtr_pole_pairs * MTR_TWOPI / 60);
+    mtr_min_speed_rad = (MTR_MIN_SPEED_RPM * mtr_pole_pairs * MTR_TWOPI / 60);
+    mtr_speed_limit = (mtr_max_speed_rad * 1.3);
+    mtr_limit_rotor_speed_rad = (mtr_max_speed_rad * 1.2);
+    mtr_i_limit_rotor_speed_rad = (mtr_max_speed_rad * 1.2);
+    g_u1_pole_pairs = mp_pole_pairs;
+}
+
+
 /******************************************************************************
 * Function Name : main
 * Description   : Initialization and main routine
@@ -127,6 +152,8 @@ setpsw_i();                                                         /* interrupt
 clrpsw_i();                                                         /* interrupt disable */
     /* R_MTR_ChargeCapacitor(); */                                        /* wait for charging capacitor */
 setpsw_i();
+
+    switch_pole();
 
     /*** main routine ***/
     while (1)
@@ -316,6 +343,7 @@ void ics_ui(void)
 void software_init(void)
 {
     g_boot_delay                   = 1000;
+    g_u1_pole_pairs                = mp_pole_pairs;
     g_u1_motor_status              = 0;
     g_u1_motor_enable              = 0;
     g_u1_motor_dir_sw              = 0;

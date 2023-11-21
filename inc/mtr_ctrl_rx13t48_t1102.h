@@ -87,6 +87,7 @@
 #define     MTR_PORT_SW1            (PORTB.PIDR.BIT.B5)        /* input port of SW1 */
 #define     MTR_PORT_SW2            (PORTB.PIDR.BIT.B4)        /* input port of SW2 */
 #define     MTR_PORT_SW3            (PORT7.PIDR.BIT.B0)        /* input port of SW3 */
+#define     MTR_PORT_POLE_PAIRS     (PORT9.PIDR.BIT.B3)        /* check POLE_PAIRS type, 0-> 2 pole_pairs, 0-> 4 pole_pairs */
 
 /******************************************************************************
 * Global function definitions
