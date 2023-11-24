@@ -173,9 +173,14 @@ clrpsw_i();
 setpsw_i();
 
 #if ADC_WORKAROUND
-    g_f4_iu_ad = (g_f4_iu_ad / 4095.0f) * 5.0;
-    g_f4_iv_ad = (g_f4_iv_ad / 4095.0f) * 5.0;
-    g_f4_iw_ad = (g_f4_iw_ad / 4095.0f) * 5.0;
+    /* 1980 is 2.4v on static volt */
+    g_f4_iu_ad = g_f4_iu_ad - 1980;
+    g_f4_iv_ad = g_f4_iv_ad - 1980;
+    g_f4_iw_ad = g_f4_iw_ad - 1980;
+
+    g_f4_iu_ad = (g_f4_iu_ad * (4.00f / 4096.0f));
+    g_f4_iv_ad = (g_f4_iv_ad * (8.00f / 4096.0f));
+    g_f4_iw_ad = (g_f4_iw_ad * (10.0f / 4096.0f));
 #else
     g_f4_iu_ad = g_f4_iu_ad - MTR_ADC_SCALING;
     g_f4_iv_ad = g_f4_iv_ad - MTR_ADC_SCALING;
