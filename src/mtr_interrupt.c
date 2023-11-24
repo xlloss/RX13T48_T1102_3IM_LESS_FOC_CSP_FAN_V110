@@ -59,9 +59,9 @@ static void mtr_over_current_interrupt(void);
 /******************************************************************************
 * Exported global variables
 ******************************************************************************/
-extern volatile float32 g_f4_iu_ad_org;
-extern volatile float32 g_f4_iv_ad_org;
-extern volatile float32 g_f4_iw_ad_org;
+extern volatile float32 g_f4_iu_ad_err_det;
+extern volatile float32 g_f4_iv_ad_err_det;
+extern volatile float32 g_f4_iw_ad_err_det;
 /* for sequence control */
 extern volatile uint8    g_u1_mode_system;          /* system mode */
 extern volatile uint16   g_u2_run_mode;             /* run mode */
@@ -166,16 +166,28 @@ static void mtr_mtu4_interrupt(void)
 clrpsw_i();
     mtr_get_iuiviwvdc(&g_f4_iu_ad, &g_f4_iv_ad, &g_f4_iw_ad, &g_f4_vdc_ad);
 
-    g_f4_iu_ad_org = g_f4_iu_ad;
-    g_f4_iv_ad_org = g_f4_iv_ad;
-    g_f4_iw_ad_org = g_f4_iw_ad;
+    /*
+     * IA = (ADC VAL - no load ADC val) / 819 * 33.333A
+     * 4096  -> 5v
+     * 2016  -> 2.4v
+     * 33.33 -> opa current opamp multiplication
+     */
+    g_f4_iu_ad_err_det = (fabsf(g_f4_iu_ad - 2016) / 819) * 33.33;
+    g_f4_iv_ad_err_det = (fabsf(g_f4_iv_ad - 2016) / 819) * 33.33;
+    g_f4_iw_ad_err_det = (fabsf(g_f4_iw_ad - 2016) / 819) * 33.33;
 
 setpsw_i();
 
 #if ADC_WORKAROUND
-    g_f4_iu_ad = (g_f4_iu_ad / 4095.0f) * 5.0;
-    g_f4_iv_ad = (g_f4_iv_ad / 4095.0f) * 5.0;
-    g_f4_iw_ad = (g_f4_iw_ad / 4095.0f) * 5.0;
+    /* 1980 is 2.4v on static volt */
+    g_f4_iu_ad = g_f4_iu_ad - 2016;
+    g_f4_iv_ad = g_f4_iv_ad - 2016;
+    g_f4_iw_ad = g_f4_iw_ad - 2016;
+
+    g_f4_iu_ad = (g_f4_iu_ad * (4.00f / 4095.0f));
+    g_f4_iv_ad = (g_f4_iv_ad * (8.00f / 4095.0f));
+    g_f4_iw_ad = (g_f4_iw_ad * (10.0f / 4095.0f));
+
 #else
     g_f4_iu_ad = g_f4_iu_ad - MTR_ADC_SCALING;
     g_f4_iv_ad = g_f4_iv_ad - MTR_ADC_SCALING;
@@ -342,7 +354,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.15f * g_f4_vdc_ad;
+    g_f4_inv_limit = 0.3f * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {

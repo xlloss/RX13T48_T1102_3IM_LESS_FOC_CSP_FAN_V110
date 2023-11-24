@@ -153,14 +153,12 @@ void mtr_init_io_port(void)
     PORT7.PDR.BIT.B0 = 0;
 
     PORT9.PODR.BIT.B4 = 1;
-    PORT9.PODR.BIT.B3 = 1;
     PORT9.PDR.BIT.B4 = 1;
-    PORT9.PDR.BIT.B3 = 1;
 
     PORTA.PODR.BIT.B3 = 1;
-    PORTA.PODR.BIT.B2 = 1;
+    /* PORTA.PODR.BIT.B2 = 1; */
     PORTA.PDR.BIT.B3 = 1;
-    PORTA.PDR.BIT.B2 = 1;
+    /* PORTA.PDR.BIT.B2 = 1; */
 
     PORTB.PODR.BIT.B6 = 1;
     PORTB.PODR.BIT.B1 = 1;
