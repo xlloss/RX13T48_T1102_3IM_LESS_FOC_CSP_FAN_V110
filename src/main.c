@@ -167,7 +167,7 @@ setpsw_i();
         else if (rpm_to_rad > CP_MAX_SPEED_RPM)
             vr1_to_rpm = CP_MAX_SPEED_RPM;
 
-        rpm_to_rad = vr1_to_rpm * MTR_POLE_PAIRS * MTR_RPM_RAD;
+        rpm_to_rad = vr1_to_rpm * mtr_pole_pairs * MTR_RPM_RAD;
 
         motor_dir = get_sw1();
         if (MTR_CW == motor_dir)
