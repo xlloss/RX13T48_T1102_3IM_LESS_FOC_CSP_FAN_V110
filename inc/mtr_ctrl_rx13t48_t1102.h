@@ -72,7 +72,7 @@
 #define     MTR_VDC_SCALING         (510.0f/4095.0f)           /* for vdc scaling */
 #define     MTR_IPMTEMPERATURE_SCALING (5.0f/4095.0f)          /* for IPM temperature scaling */
 
-#define     MTR_OVERCURRENT_LIMIT   (5.00f)                  /* over current limit [A] */
+#define     MTR_OVERCURRENT_LIMIT   (40.00f)                  /* over current limit [A] */
 
 #define     MTR_OVERVOLTAGE_LIMIT   (311.0f)                   /* over voltage limit [V] */
                                                                /* 220 * 1.414 = 311 */
