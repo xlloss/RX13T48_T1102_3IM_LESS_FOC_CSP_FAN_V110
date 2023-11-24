@@ -47,9 +47,9 @@ volatile uint8    g_u1_error_status;                /* error status */
 /****** for ICS ******/
 volatile uint8    g_u1_cnt_ics;                     /* counter for period of calling "ics_watchpoint" */
 /*********************/
-volatile float32 g_f4_iu_ad_org;
-volatile float32 g_f4_iv_ad_org;
-volatile float32 g_f4_iw_ad_org;
+volatile float32 g_f4_iu_ad_err_det;
+volatile float32 g_f4_iv_ad_err_det;
+volatile float32 g_f4_iw_ad_err_det;
 
 volatile float32  g_f4_vdc_ad;                      /* inverter bus voltage */
 volatile float32  g_f4_vd_ref;                      /* gamma-axis output voltage command */
@@ -262,9 +262,9 @@ static uint8 mtr_act_reset(uint8 u1_state)
 /****** for ICS ******/
     g_u1_cnt_ics = 0;
 /*********************/
-    g_f4_iu_ad_org = 0;
-    g_f4_iv_ad_org = 0;
-    g_f4_iw_ad_org = 0;
+    g_f4_iu_ad_err_det = 0;
+    g_f4_iv_ad_err_det = 0;
+    g_f4_iw_ad_err_det = 0;
 
     g_f4_vdc_ad = 0;
     g_f4_vd_ref = 0;
@@ -762,19 +762,19 @@ void mtr_error_check(void)
     /*==================================*/
     /*     over current error check     */
     /*==================================*/
-    f4_temp0 = fabsf(g_f4_iu_ad);
+    f4_temp0 = fabsf(g_f4_iu_ad_err_det);
     if (f4_temp0 > MTR_OVERCURRENT_LIMIT)
     {
         R_MTR_ExecEvent(MTR_EVENT_ERROR);               /* execute error event */
         g_u1_error_status = MTR_OVER_CURRENT_ERROR;     /* over current error */
     }
-    f4_temp0 = fabsf(g_f4_iv_ad);
+    f4_temp0 = fabsf(g_f4_iv_ad_err_det);
     if (f4_temp0 > MTR_OVERCURRENT_LIMIT)
     {
         R_MTR_ExecEvent(MTR_EVENT_ERROR);               /* execute error event */
         g_u1_error_status = MTR_OVER_CURRENT_ERROR;     /* over current error */
     }
-    f4_temp0 = fabsf(g_f4_iw_ad);
+    f4_temp0 = fabsf(g_f4_iw_ad_err_det);
     if (f4_temp0 > MTR_OVERCURRENT_LIMIT)
     {
         R_MTR_ExecEvent(MTR_EVENT_ERROR);               /* execute error event */
