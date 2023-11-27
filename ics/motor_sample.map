@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.03.00 )             21-Apr-2021 12:24:18
+Renesas Optimizing Linker (W3.05.00 )             27-Nov-2023 13:56:21
 
 *** Options ***
 
@@ -91,7 +91,7 @@ L
 PIntPRG
                                   fffe0584  fffe063a        b7   1
 P
-                                  fffe063b  fffe2e5f      2825   1
+                                  fffe063b  fffe2e3a      2800   1
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFF88
@@ -105,7 +105,7 @@ FIXEDVECT
 
 RAMDATA SECTION:  00000fb0 Byte(s)
 ROMDATA SECTION:  0000059f Byte(s)
-PROGRAM SECTION:  00002905 Byte(s)
+PROGRAM SECTION:  000028e0 Byte(s)
 
 *** Symbol List ***
 
@@ -707,227 +707,227 @@ FILE=DefaultBuild\intprg.obj
 
 SECTION=P
 FILE=DefaultBuild\main.obj
-                                  fffe063b  fffe09e0       3a6
+                                  fffe063b  fffe09e9       3af
   _main
                                   fffe063b        46   func ,g         * 
   _ics_ui
-                                  fffe0681       188   func ,l         * 
+                                  fffe0681       187   func ,l         * 
   _software_init
-                                  fffe0809       1d8   func ,l         * 
+                                  fffe0808       1e2   func ,l         * 
 FILE=DefaultBuild\mtr_3im_less_foc.obj
-                                  fffe09e1  fffe14b8       ad8
+                                  fffe09ea  fffe14d6       aed
   _R_MTR_InitSequence
-                                  fffe09e1         a   func ,g         * 
+                                  fffe09ea         a   func ,g         * 
   _R_MTR_ExecEvent
-                                  fffe09eb        45   func ,g         * 
+                                  fffe09f4        45   func ,g         * 
   _mtr_act_run
-                                  fffe0a30        1e   func ,l         * 
+                                  fffe0a39        1e   func ,l         * 
   _mtr_act_stop
-                                  fffe0a4e        14   func ,l         * 
+                                  fffe0a57        14   func ,l         * 
   _mtr_act_none
-                                  fffe0a62         1   func ,l         * 
+                                  fffe0a6b         1   func ,l         * 
   _mtr_act_reset
-                                  fffe0a63       391   func ,l         * 
+                                  fffe0a6c       391   func ,l         * 
   _mtr_act_error
-                                  fffe0df4        11   func ,l         * 
+                                  fffe0dfd        11   func ,l         * 
   _mtr_start_init
-                                  fffe0e05       11c   func ,l         * 
+                                  fffe0e0e       11c   func ,l         * 
   _mtr_stop_init
-                                  fffe0f21        e4   func ,l         * 
+                                  fffe0f2a        e4   func ,l         * 
   _mtr_pi_ctrl
-                                  fffe1005        45   func ,g         * 
+                                  fffe100e        45   func ,g         * 
   _mtr_set_variables
-                                  fffe104a       15a   func ,g         * 
+                                  fffe1053       16f   func ,g         * 
   _R_MTR_IcsInput
-                                  fffe11a4        72   func ,g         * 
+                                  fffe11c2        72   func ,g         * 
   _R_MTR_SetDir
-                                  fffe1216         9   func ,g         * 
+                                  fffe1234         9   func ,g         * 
   _R_MTR_GetSpeed
-                                  fffe121f        10   func ,g         * 
+                                  fffe123d        10   func ,g         * 
   _R_MTR_GetDir
-                                  fffe122f         9   func ,g         * 
+                                  fffe124d         9   func ,g         * 
   _R_MTR_GetStatus
-                                  fffe1238         9   func ,g         * 
+                                  fffe1256         9   func ,g         * 
   _mtr_error_check
-                                  fffe1241        9f   func ,g         * 
+                                  fffe125f        9f   func ,g         * 
   _mtr_set_speed_ref
-                                  fffe12e0        c1   func ,g         * 
+                                  fffe12fe        c1   func ,g         * 
   _mtr_set_iq_ref
-                                  fffe13a1        88   func ,g         * 
+                                  fffe13bf        88   func ,g         * 
   _mtr_set_id_ref
-                                  fffe1429        67   func ,g         * 
+                                  fffe1447        67   func ,g         * 
   _mtr_calc_mod
-                                  fffe1490        29   func ,g         * 
+                                  fffe14ae        29   func ,g         * 
 FILE=DefaultBuild\mtr_interrupt.obj
-                                  fffe14b9  fffe1ade       626
+                                  fffe14d7  fffe1ad7       601
   _mtr_over_current_interrupt
-                                  fffe14b9        1d   func ,l         * 
+                                  fffe14d7        1d   func ,l         * 
   _mtr_mtu4_interrupt
-                                  fffe14d6       52d   func ,l         * 
+                                  fffe14f4       508   func ,l         * 
   _mtr_cmt0_interrupt
-                                  fffe1a03        dc   func ,l         * 
+                                  fffe19fc        dc   func ,l         * 
 FILE=DefaultBuild\r_init_clock.obj
-                                  fffe1adf  fffe1b55        77
+                                  fffe1ad8  fffe1b4e        77
   _R_INIT_Clock
-                                  fffe1adf        32   func ,g         * 
+                                  fffe1ad8        32   func ,g         * 
   _CGC_oscillation_main
-                                  fffe1b11        25   func ,g         * 
+                                  fffe1b0a        25   func ,g         * 
   _CGC_oscillation_PLL
-                                  fffe1b36        12   func ,g         * 
+                                  fffe1b2f        12   func ,g         * 
   _CGC_oscillation_HOCO
-                                  fffe1b48         e   func ,g         * 
+                                  fffe1b41         e   func ,g         * 
 FILE=DefaultBuild\sbrk.obj
-                                  fffe1b56  fffe1b76        21
+                                  fffe1b4f  fffe1b6f        21
   _sbrk
-                                  fffe1b56        21   func ,g         * 
+                                  fffe1b4f        21   func ,g         * 
 FILE=DefaultBuild\mtr_ctrl_rx13t48.obj
-                                  fffe1b77  fffe1cb4       13e
+                                  fffe1b70  fffe1cad       13e
   _R_MTR_InitHardware
-                                  fffe1b77        1c   func ,g         * 
+                                  fffe1b70        1c   func ,g         * 
   _mtr_init_module
-                                  fffe1b93        2a   func ,g         * 
+                                  fffe1b8c        2a   func ,g         * 
   _mtr_init_cmt
-                                  fffe1bbd        5e   func ,g         * 
+                                  fffe1bb6        5e   func ,g         * 
   _mtr_init_poe3
-                                  fffe1c1b        59   func ,g         * 
+                                  fffe1c14        59   func ,g         * 
   _init_wdt
-                                  fffe1c74        25   func ,g         * 
+                                  fffe1c6d        25   func ,g         * 
   _clear_wdt
-                                  fffe1c99         c   func ,g         * 
+                                  fffe1c92         c   func ,g         * 
   _mtr_clear_oc_flag
-                                  fffe1ca5         8   func ,g         * 
+                                  fffe1c9e         8   func ,g         * 
   _mtr_clear_cmt0_flag
-                                  fffe1cad         8   func ,g         * 
+                                  fffe1ca6         8   func ,g         * 
 FILE=DefaultBuild\mtr_ctrl_rx13t48_t1102.obj
-                                  fffe1cb5  fffe2076       3c2
+                                  fffe1cae  fffe206f       3c2
   _mtr_init_mtu
-                                  fffe1cb5       123   func ,g         * 
+                                  fffe1cae       123   func ,g         * 
   _mtr_init_io_port
-                                  fffe1dd8        81   func ,g         * 
+                                  fffe1dd1        81   func ,g         * 
   _mtr_init_ad_converter
-                                  fffe1e59        c9   func ,g         * 
+                                  fffe1e52        c9   func ,g         * 
   _init_ui
-                                  fffe1f22        48   func ,g         * 
+                                  fffe1f1b        48   func ,g         * 
   _mtr_ctrl_start
-                                  fffe1f6a        2c   func ,g         * 
+                                  fffe1f63        2c   func ,g         * 
   _mtr_ctrl_stop
-                                  fffe1f96        2c   func ,g         * 
+                                  fffe1f8f        2c   func ,g         * 
   _mtr_get_iuiviwvdc
-                                  fffe1fc2        28   func ,g         * 
+                                  fffe1fbb        28   func ,g         * 
   _mtr_get_ipm_temperature
-                                  fffe1fea         8   func ,g         * 
+                                  fffe1fe3         8   func ,g         * 
   _mtr_clear_mtu4_flag
-                                  fffe1ff2         8   func ,g         * 
+                                  fffe1feb         8   func ,g         * 
   _mtr_inv_set_uvw
-                                  fffe1ffa        6d   func ,g         * 
+                                  fffe1ff3        6d   func ,g         * 
   _mtr_init_register
-                                  fffe2067        10   func ,g         * 
+                                  fffe2060        10   func ,g         * 
 FILE=DefaultBuild\mtr_ctrl_t1102.obj
-                                  fffe2077  fffe210a        94
+                                  fffe2070  fffe2101        92
   _R_MTR_ChargeCapacitor
-                                  fffe2077        42   func ,g         * 
+                                  fffe2070        40   func ,g         * 
   _ic_gate_on
-                                  fffe20b9         8   func ,g         * 
+                                  fffe20b0         8   func ,g         * 
   _led1_on
-                                  fffe20c1         8   func ,g         * 
+                                  fffe20b8         8   func ,g         * 
   _led2_on
-                                  fffe20c9         8   func ,g         * 
+                                  fffe20c0         8   func ,g         * 
   _led1_off
-                                  fffe20d1         8   func ,g         * 
+                                  fffe20c8         8   func ,g         * 
   _led2_off
-                                  fffe20d9         8   func ,g         * 
+                                  fffe20d0         8   func ,g         * 
   _get_sw1
-                                  fffe20e1         c   func ,g         * 
+                                  fffe20d8         c   func ,g         * 
   _get_sw2
-                                  fffe20ed         c   func ,g         * 
+                                  fffe20e4         c   func ,g         * 
   _get_sw3
-                                  fffe20f9         a   func ,g         * 
+                                  fffe20f0         a   func ,g         * 
   _get_vr1
-                                  fffe2103         8   func ,g         * 
+                                  fffe20fa         8   func ,g         * 
 FILE=cosf
-                                  fffe210b  fffe213e        34
-  _cosl
-                                  fffe210b         2   func ,g         * 
-  _cos
-                                  fffe210d         2   func ,g         * 
+                                  fffe2102  fffe2131        30
   _cosf
-                                  fffe210f        30   func ,g         * 
+                                  fffe2102        30   func ,g         * 
+  _cos
+                                  fffe2102         0   func ,g         * 
+  _cosl
+                                  fffe2102         0   func ,g         * 
 FILE=sinf
-                                  fffe213f  fffe217f        41
-  _sinl
-                                  fffe213f         2   func ,g         * 
-  _sin
-                                  fffe2141         2   func ,g         * 
+                                  fffe2132  fffe216e        3d
   _sinf
-                                  fffe2143        3d   func ,g         * 
+                                  fffe2132        3d   func ,g         * 
+  _sin
+                                  fffe2132         0   func ,g         * 
+  _sinl
+                                  fffe2132         0   func ,g         * 
 FILE=copysignf
-                                  fffe2180  fffe219a        1b
-  _copysignl
-                                  fffe2180         2   func ,g         * 
-  _copysign
-                                  fffe2182         2   func ,g         * 
+                                  fffe216f  fffe2184        16
   _copysignf
-                                  fffe2184        17   func ,g         * 
+                                  fffe216f        16   func ,g         * 
+  _copysign
+                                  fffe216f         0   func ,g         * 
+  _copysignl
+                                  fffe216f         0   func ,g         * 
 FILE=__initsct
-                                  fffe219b  fffe21e4        4a
+                                  fffe2185  fffe21ce        4a
   __INITSCT
-                                  fffe219b         0   none ,g         * 
+                                  fffe2185         0   none ,g         * 
   loop1
-                                  fffe21ad         0   none ,l         * 
+                                  fffe2197         0   none ,l         * 
   next_loop1
-                                  fffe21bb         0   none ,l         * 
+                                  fffe21a5         0   none ,l         * 
   loop3
-                                  fffe21cd         0   none ,l         * 
+                                  fffe21b7         0   none ,l         * 
   next_loop3
-                                  fffe21de         0   none ,l         * 
+                                  fffe21c8         0   none ,l         * 
 FILE=ICS2_RX13T
-                                  fffe21e5  fffe2c62       a7e
+                                  fffe21cf  fffe2c4c       a7e
   _ics_send_packet
-                                  fffe21e5        5a   func ,l         * 
+                                  fffe21cf        5a   func ,l         * 
   _ics_command_ack_word
-                                  fffe223f        1b   func ,l         * 
+                                  fffe2229        1b   func ,l         * 
   _ics_command_error
-                                  fffe225a        3b   func ,l         * 
+                                  fffe2244        3b   func ,l         * 
   _ics_int_sci_rxi
-                                  fffe2295       24a   func ,g         * 
+                                  fffe227f       24a   func ,g         * 
   _ics2_watchpoint
-                                  fffe24df       447   func ,g         * 
+                                  fffe24c9       447   func ,g         * 
   _ics2_init
-                                  fffe2926       300   func ,g         * 
+                                  fffe2910       300   func ,g         * 
   _ics2_version
-                                  fffe2c26         6   func ,g         * 
+                                  fffe2c10         6   func ,g         * 
   _ics_int_sci_eri
-                                  fffe2c2c        37   func ,g         * 
+                                  fffe2c16        37   func ,g         * 
 FILE=sincosfsub
-                                  fffe2c63  fffe2d4c        ea
+                                  fffe2c4d  fffe2d34        e8
   ___poly_sinf
-                                  fffe2c63        31   func ,g         * 
+                                  fffe2c4d        31   func ,g         * 
   ___poly_cosf
-                                  fffe2c94        28   func ,g         * 
+                                  fffe2c7e        28   func ,g         * 
   _poly_cosfn
-                                  fffe2cbc         7   func ,l         * 
+                                  fffe2ca6         7   func ,l         * 
   _poly_sinfn
-                                  fffe2cc3         5   func ,l         * 
+                                  fffe2cad         5   func ,l         * 
   _sincosf_special
-                                  fffe2cc8        33   func ,l         * 
+                                  fffe2cb2        31   func ,l         * 
   ___internal_sincosf
-                                  fffe2cfb        52   func ,g         * 
+                                  fffe2ce3        52   func ,g         * 
 FILE=fmodf
-                                  fffe2d4d  fffe2d7f        33
-  _fmodl
-                                  fffe2d4d         2   func ,g         * 
-  _fmod
-                                  fffe2d4f         2   func ,g         * 
+                                  fffe2d35  fffe2d63        2f
   _fmodf
-                                  fffe2d51        2f   func ,g         * 
+                                  fffe2d35        2f   func ,g         * 
+  _fmod
+                                  fffe2d35         0   func ,g         * 
+  _fmodl
+                                  fffe2d35         0   func ,g         * 
 FILE=nanfval
-                                  fffe2d80  fffe2d86         7
+                                  fffe2d64  fffe2d6a         7
   ___nanf_value
-                                  fffe2d80         7   func ,g         * 
+                                  fffe2d64         7   func ,g         * 
 FILE=_i_fmds
-                                  fffe2d87  fffe2e5f        d9
+                                  fffe2d6b  fffe2e3a        d0
   __in_fmods
-                                  fffe2d87        d9   func ,g         * 
+                                  fffe2d6b        d0   func ,g         * 
 
 SECTION=$ADDR_C_FFFFFF80
 FILE=DefaultBuild\vecttbl.obj
@@ -1429,106 +1429,106 @@ No   Unit Name   Global.Symbol   Location External Infomation
      SECTION=B_1
                  _g_u1_motor_status
                                  00000404 0003(fffe07c0:P)
-                                          0003(fffe080d:P)
+                                          0003(fffe080c:P)
                  _g_u1_drive_sw_state
-                                 00000405 0003(fffe0990:P)
+                                 00000405 0003(fffe099a:P)
                  _g_u1_err_reset_sw_state
-                                 00000406 0003(fffe0998:P)
+                                 00000406 0003(fffe09a2:P)
      SECTION=B_2
                  _com_s2_mode_system
                                  0000042a 0003(fffe07a0:P)
-                                          0003(fffe0815:P)
+                                          0003(fffe0814:P)
                  _g_s2_mode_system
                                  0000042c 0003(fffe07a8:P)
-                                          0003(fffe081d:P)
+                                          0003(fffe081c:P)
                  _com_s2_direction
                                  0000042e 0003(fffe06bb:P)
-                                          0003(fffe0825:P)
+                                          0003(fffe0824:P)
                  _com_s2_ref_speed_rpm
                                  00000430 0003(fffe0685:P)
-                                          0003(fffe082d:P)
+                                          0003(fffe082c:P)
                  _com_s2_max_speed_rpm
                                  00000432 0003(fffe068b:P)
-                                          0003(fffe08cd:P)
+                                          0003(fffe08ca:P)
                  _com_s2_min_speed_rpm
-                                 00000434 0003(fffe08d7:P)
+                                 00000434 0003(fffe08d4:P)
                  _com_s2_enable_write
                                  00000436 0003(fffe06a3:P)
-                                          0003(fffe0953:P)
+                                          0003(fffe0957:P)
                  _g_s2_enable_write
                                  00000438 0003(fffe06ab:P)
-                                          0003(fffe095b:P)
+                                          0003(fffe095f:P)
                  _g_s2_ref_speed_rpm
-                                 0000043a 0003(fffe09d8:P)
+                                 0000043a 0003(fffe09e1:P)
      SECTION=B
                  _com_f4_kp_speed
                                  00000458 0003(fffe06d5:P)
-                                          0003(fffe0835:P)
+                                          0003(fffe0834:P)
                  _com_f4_ki_speed
                                  0000045c 0003(fffe06de:P)
-                                          0003(fffe0843:P)
+                                          0003(fffe0842:P)
                  _com_f4_kp_iq
                                  00000460 0003(fffe06e7:P)
-                                          0003(fffe0857:P)
+                                          0003(fffe0856:P)
                  _com_f4_ki_iq
                                  00000464 0003(fffe06f0:P)
-                                          0003(fffe085f:P)
+                                          0003(fffe085e:P)
                  _com_f4_speed_lpf_k
                                  00000468 0003(fffe06f9:P)
-                                          0003(fffe0867:P)
+                                          0003(fffe0866:P)
                  _com_f4_current_lpf_k
                                  0000046c 0003(fffe0702:P)
-                                          0003(fffe087b:P)
+                                          0003(fffe087a:P)
                  _com_f4_mtr_rs
                                  00000470 0003(fffe070b:P)
-                                          0003(fffe0889:P)
+                                          0003(fffe0882:P)
                  _com_f4_mtr_rr
                                  00000474 0003(fffe0714:P)
-                                          0003(fffe0897:P)
+                                          0003(fffe0896:P)
                  _com_f4_mtr_m
                                  00000478 0003(fffe071d:P)
-                                          0003(fffe089f:P)
+                                          0003(fffe089e:P)
                  _com_f4_mtr_lls
                                  0000047c 0003(fffe0726:P)
-                                          0003(fffe08ad:P)
+                                          0003(fffe08ac:P)
                  _com_f4_mtr_llr
                                  00000480 0003(fffe072f:P)
-                                          0003(fffe08b5:P)
+                                          0003(fffe08b4:P)
                  _com_f4_offset_lpf_k
                                  00000484 0003(fffe0738:P)
-                                          0003(fffe08c5:P)
+                                          0003(fffe08c2:P)
                  _com_f4_ctrl_ref_id
                                  00000488 0003(fffe0741:P)
-                                          0003(fffe08e7:P)
+                                          0003(fffe08e5:P)
                  _com_f4_boot_id_up_time
                                  0000048c 0003(fffe074a:P)
-                                          0003(fffe08f5:P)
+                                          0003(fffe08f3:P)
                  _com_f4_id_const_time
                                  00000490 0003(fffe0753:P)
-                                          0003(fffe0903:P)
+                                          0003(fffe0901:P)
                  _com_f4_accel
                                  00000494 0003(fffe075c:P)
-                                          0003(fffe090b:P)
+                                          0003(fffe0909:P)
                  _com_f4_fluctuation_limit
                                  00000498 0003(fffe0765:P)
-                                          0003(fffe0919:P)
+                                          0003(fffe0917:P)
                  _com_f4_offset_calc_time
                                  0000049c 0003(fffe0777:P)
-                                          0003(fffe0927:P)
+                                          0003(fffe0925:P)
                  _com_f4_delay
                                  000004a0 0003(fffe076e:P)
-                                          0003(fffe092f:P)
+                                          0003(fffe0933:P)
                  _com_f4_voltage_drop
                                  000004a4 0003(fffe0780:P)
-                                          0003(fffe093d:P)
+                                          0003(fffe0941:P)
                  _com_f4_voltage_drop_k
                                  000004a8 0003(fffe0789:P)
-                                          0003(fffe0945:P)
+                                          0003(fffe0949:P)
                  _ics_input
                                  000004ac 0003(fffe06cf:P)
-                                          0003(fffe094d:P)
+                                          0003(fffe0951:P)
                  _g_f4_ref_speed_ad
-                                 00000508 0003(fffe09a0:P)
+                                 00000508 0003(fffe09aa:P)
      SECTION=BDTCTABLE
                  _dtc_table
                                  00002000 0003(fffe065c:P)
@@ -1541,419 +1541,419 @@ No   Unit Name   Global.Symbol   Location External Infomation
 0004 mtr_3im_less_foc
      SECTION=B_1
                  _g_u1_mode_system
-                                 00000407 0004(fffe09e3:P)
-                                          0004(fffe09ef:P)
-                                          0004(fffe0a3d:P)
-                                          0004(fffe0a6d:P)
-                                          0004(fffe123a:P)
-                                          0004(fffe13ce:P)
-                                          0005(fffe16c0:P)
-                                          0005(fffe1779:P)
-                                          0005(fffe1991:P)
-                                          0005(fffe1a27:P)
-                 _g_u1_error_status
-                                 00000408 0004(fffe09f9:P)
-                                          0004(fffe0a86:P)
+                                 00000407 0004(fffe09ec:P)
+                                          0004(fffe09f8:P)
+                                          0004(fffe0a46:P)
+                                          0004(fffe0a76:P)
                                           0004(fffe1258:P)
-                                          0005(fffe14c5:P)
+                                          0004(fffe13ec:P)
+                                          0005(fffe16b9:P)
+                                          0005(fffe1772:P)
+                                          0005(fffe198a:P)
+                                          0005(fffe1a20:P)
+                 _g_u1_error_status
+                                 00000408 0004(fffe0a02:P)
+                                          0004(fffe0a8f:P)
+                                          0004(fffe1276:P)
+                                          0005(fffe14e3:P)
                  _g_u1_cnt_ics
-                                 00000409 0004(fffe0a8e:P)
-                                          0005(fffe19d2:P)
+                                 00000409 0004(fffe0a97:P)
+                                          0005(fffe19cb:P)
                  _g_u1_direction
-                                 0000040a 0004(fffe0c4a:P)
-                                          0004(fffe1218:P)
-                                          0004(fffe1231:P)
-                                          0005(fffe1a3c:P)
+                                 0000040a 0004(fffe0c53:P)
+                                          0004(fffe1236:P)
+                                          0004(fffe124f:P)
+                                          0005(fffe1a35:P)
                  _g_u1_enable_write
-                                 0000040b 0004(fffe0c5a:P)
-                                          0004(fffe120e:P)
-                                          0005(fffe19eb:P)
+                                 0000040b 0004(fffe0c63:P)
+                                          0004(fffe122c:P)
+                                          0005(fffe19e4:P)
                  _g_u1_flag_id_ref
-                                 0000040c 0004(fffe0c7a:P)
-                                          0004(fffe0eea:P)
-                                          0004(fffe0fce:P)
-                                          0004(fffe142b:P)
-                                          0005(fffe1a92:P)
+                                 0000040c 0004(fffe0c83:P)
+                                          0004(fffe0ef3:P)
+                                          0004(fffe0fd7:P)
+                                          0004(fffe1449:P)
+                                          0005(fffe1a8b:P)
                  _g_u1_dir_buff
-                                 0000040d 0004(fffe0c52:P)
-                                          0004(fffe104c:P)
+                                 0000040d 0004(fffe0c5b:P)
+                                          0004(fffe1055:P)
                  _g_u1_flag_iq_ref
-                                 0000040e 0004(fffe0c82:P)
-                                          0004(fffe0ef2:P)
-                                          0004(fffe0fd6:P)
-                                          0004(fffe13a3:P)
+                                 0000040e 0004(fffe0c8b:P)
+                                          0004(fffe0efb:P)
+                                          0004(fffe0fdf:P)
+                                          0004(fffe13c1:P)
                  _g_u1_flag_offset_calc
-                                 0000040f 0004(fffe0d2b:P)
-                                          0004(fffe0e10:P)
+                                 0000040f 0004(fffe0d34:P)
+                                          0004(fffe0e19:P)
                  _g_u1_flag_speed_ref
-                                 00000410 0004(fffe0c8a:P)
-                                          0004(fffe0efa:P)
-                                          0004(fffe0fde:P)
-                                          0004(fffe12e4:P)
+                                 00000410 0004(fffe0c93:P)
+                                          0004(fffe0f03:P)
+                                          0004(fffe0fe7:P)
+                                          0004(fffe1302:P)
      SECTION=B_2
                  _g_u2_run_mode
-                                 0000043c 0004(fffe0a75:P)
-                                          0004(fffe0e18:P)
-                                          0004(fffe0f25:P)
-                                          0004(fffe12fd:P)
-                                          0004(fffe13be:P)
-                                          0005(fffe1a57:P)
+                                 0000043c 0004(fffe0a7e:P)
+                                          0004(fffe0e21:P)
+                                          0004(fffe0f2e:P)
+                                          0004(fffe131b:P)
+                                          0004(fffe13dc:P)
+                                          0005(fffe1a50:P)
                  _g_u2_ctrl_mode
-                                 0000043e 0004(fffe0a7d:P)
-                                          0004(fffe0e49:P)
-                                          0004(fffe0f2d:P)
-                 _g_u2_cnt_adjust
-                                 00000440 0004(fffe0c62:P)
-                                          0004(fffe0e07:P)
-                                          0005(fffe1513:P)
-                                          0005(fffe1a73:P)
-                 _g_u2_cnt_id_const
-                                 00000442 0004(fffe0d9d:P)
-                                          0004(fffe0f1a:P)
-                                          0004(fffe0ffe:P)
-                                          0004(fffe1468:P)
-     SECTION=B
-                 _g_f4_vdc_ad
-                                 0000050c 0004(fffe0a96:P)
-                                          0004(fffe1296:P)
-                                          0005(fffe14f4:P)
-                                          0005(fffe164d:P)
-                                          0005(fffe193b:P)
-                                          0005(fffe19aa:P)
-                                          0012(fffe207b:P)
-                 _g_f4_vd_ref
-                                 00000510 0004(fffe0a9e:P)
-                                          0004(fffe0e62:P)
-                                          0004(fffe0f46:P)
-                                          0005(fffe1781:P)
-                 _g_f4_vq_ref
-                                 00000514 0004(fffe0aa6:P)
-                                          0004(fffe0e6a:P)
-                                          0004(fffe0f4e:P)
-                                          0005(fffe1789:P)
-                 _g_f4_iu_ad
-                                 00000518 0004(fffe0aae:P)
-                                          0004(fffe1243:P)
-                                          0005(fffe14e6:P)
-                                          0012(fffe208d:P)
-                 _g_f4_pre_iu_ad
-                                 0000051c 0004(fffe0ab6:P)
-                                          0005(fffe156f:P)
-                 _g_f4_iv_ad
-                                 00000520 0004(fffe0abe:P)
-                                          0004(fffe1268:P)
-                                          0005(fffe14e0:P)
-                                          0012(fffe2087:P)
-                 _g_f4_pre_iv_ad
-                                 00000524 0004(fffe0ac6:P)
-                                          0005(fffe15a5:P)
-                 _g_f4_iw_ad
-                                 00000528 0004(fffe0ace:P)
-                                          0004(fffe127f:P)
-                                          0005(fffe14da:P)
-                                          0012(fffe2081:P)
-                 _g_f4_pre_iw_ad
-                                 0000052c 0004(fffe0ad6:P)
-                                          0005(fffe15be:P)
-                 _g_f4_offset_iu
-                                 00000530 0004(fffe0ade:P)
-                                          0005(fffe1524:P)
-                 _g_f4_offset_iv
-                                 00000534 0004(fffe0ae6:P)
-                                          0005(fffe155d:P)
-                 _g_f4_offset_iw
-                                 00000538 0004(fffe0aee:P)
-                                          0005(fffe1563:P)
-                 _g_f4_id_lpf
-                                 0000053c 0004(fffe0af6:P)
-                                          0005(fffe1698:P)
-                 _g_f4_iq_lpf
-                                 00000540 0004(fffe0afe:P)
-                                          0005(fffe16b5:P)
-                 _g_f4_pre_id_lpf
-                                 00000544 0004(fffe0b06:P)
-                 _g_f4_pre_iq_lpf
-                                 00000548 0004(fffe0b0e:P)
-                 _g_f4_kp_id
-                                 0000054c 0004(fffe0b16:P)
-                                          0005(fffe16f1:P)
-                 _g_f4_ki_id
-                                 00000550 0004(fffe0b24:P)
-                                          0005(fffe16fa:P)
-                 _g_f4_lim_id
-                                 00000554 0004(fffe0b5a:P)
-                                          0005(fffe1703:P)
-                 _g_f4_ilim_id
-                                 00000558 0004(fffe0b84:P)
-                                          0005(fffe170c:P)
-                 _g_f4_kp_iq
-                                 0000055c 0004(fffe0b2c:P)
-                                          0004(fffe1094:P)
-                                          0005(fffe1726:P)
-                 _g_f4_ki_iq
-                                 00000560 0004(fffe0b3a:P)
-                                          0004(fffe109d:P)
-                                          0005(fffe1731:P)
-                 _g_f4_lim_rotor_speed_rad
-                                 00000564 0004(fffe0b68:P)
-                                          0004(fffe1135:P)
-                                          0005(fffe173a:P)
-                 _g_f4_ilim_rotor_speed_rad
-                                 00000568 0004(fffe0b8c:P)
-                                          0004(fffe113d:P)
-                                          0005(fffe1743:P)
-                 _g_f4_id_ref
-                                 0000056c 0004(fffe0b9c:P)
-                                          0004(fffe0e72:P)
-                                          0004(fffe0f56:P)
-                                          0004(fffe1489:P)
-                                          0005(fffe16de:P)
-                                          0005(fffe1aae:P)
-                 _g_f4_id_ref2
-                                 00000570 0004(fffe0ba4:P)
-                                          0004(fffe0e7a:P)
-                                          0004(fffe0f5e:P)
-                                          0005(fffe16c8:P)
-                 _g_f4_iq_ref
-                                 00000574 0004(fffe0bac:P)
-                                          0004(fffe0e82:P)
-                                          0004(fffe0f66:P)
-                                          0004(fffe1420:P)
-                                          0005(fffe16d0:P)
-                 _g_f4_ref_stator_speed_rad
-                                 00000578 0004(fffe0bb4:P)
-                                          0004(fffe0e8a:P)
-                                          0004(fffe0f6e:P)
-                                          0005(fffe176e:P)
-                 _g_f4_slip_speed_rad
-                                 0000057c 0004(fffe0bbc:P)
-                                          0004(fffe0e92:P)
-                                          0004(fffe0f76:P)
-                                          0005(fffe1761:P)
-                 _g_f4_slip_k
-                                 00000580 0004(fffe0bc4:P)
-                                          0004(fffe0e9a:P)
-                                          0004(fffe0f7e:P)
-                                          0005(fffe1759:P)
-                                          0005(fffe1abd:P)
-                 _g_f4_speed_rad
-                                 00000584 0004(fffe0bcc:P)
-                                          0004(fffe0ed2:P)
-                                          0004(fffe0fb6:P)
-                                          0004(fffe1221:P)
-                                          0004(fffe12c2:P)
-                                          0005(fffe16d6:P)
-                                          0005(fffe1a11:P)
-                 _g_f4_ref_speed_rad_pi
-                                 00000588 0004(fffe0bd4:P)
-                                          0004(fffe0eda:P)
-                                          0004(fffe0fbe:P)
-                                          0004(fffe1398:P)
-                                          0005(fffe1a1f:P)
-                 _g_f4_ref_speed_rad
-                                 0000058c 0004(fffe0bdc:P)
-                                          0004(fffe107a:P)
-                                          0004(fffe130d:P)
-                 _g_f4_angle_rad
-                                 00000590 0004(fffe0be4:P)
-                                          0004(fffe0ee2:P)
-                                          0004(fffe0fc6:P)
-                                          0005(fffe1662:P)
-                 _g_f4_refu
-                                 00000594 0004(fffe0c04:P)
-                                          0004(fffe0eba:P)
-                                          0004(fffe0f9e:P)
-                                          0005(fffe185c:P)
-                 _g_f4_refv
-                                 00000598 0004(fffe0c0c:P)
-                                          0004(fffe0ec2:P)
-                                          0004(fffe0fa6:P)
-                                          0005(fffe18ab:P)
-                 _g_f4_refw
-                                 0000059c 0004(fffe0c14:P)
-                                          0004(fffe0eca:P)
-                                          0004(fffe0fae:P)
-                                          0005(fffe18c9:P)
-                 _g_f4_inv_limit
-                                 000005a0 0004(fffe0c1c:P)
-                                          0005(fffe1943:P)
-                 _g_f4_speed_lpf_k
-                                 000005a4 0004(fffe0c28:P)
-                                          0004(fffe10a6:P)
-                 _g_f4_current_lpf_k
-                                 000005a8 0004(fffe0c34:P)
-                                          0004(fffe10af:P)
-                                          0005(fffe157e:P)
-                 _g_f4_offset_lpf_k
-                                 000005ac 0004(fffe0c42:P)
-                                          0004(fffe10cb:P)
-                                          0005(fffe15d9:P)
-                 _g_f4_temp_speed_rad
-                                 000005b0 0004(fffe0c92:P)
-                                          0004(fffe1357:P)
-                                          0004(fffe13e2:P)
-                                          0005(fffe1a0b:P)
-                 _g_f4_temp_ref_speed_rad
-                                 000005b4 0004(fffe0c9a:P)
-                                          0004(fffe12ec:P)
-                                          0004(fffe13da:P)
-                                          0005(fffe1a19:P)
-                 _g_f4_angle_compensation
-                                 000005b8 0004(fffe0ca2:P)
-                                          0004(fffe1179:P)
-                                          0005(fffe17c8:P)
-                 _g_f4_offset_calc_time
-                                 000005bc 0004(fffe0cae:P)
-                                          0004(fffe0e28:P)
-                                          0004(fffe118a:P)
-                                          0005(fffe1502:P)
-                                          0005(fffe1a6b:P)
-                 _g_f4_voltage_drop
-                                 000005c0 0004(fffe0cc2:P)
-                                          0004(fffe1193:P)
-                                          0005(fffe18e0:P)
-                 _g_f4_voltage_drop_k
-                                 000005c4 0004(fffe0cce:P)
-                                          0004(fffe119c:P)
-                                          0005(fffe18d8:P)
-                 _g_f4_modu
-                                 000005c8 0004(fffe0cd6:P)
-                                          0004(fffe0f02:P)
-                                          0004(fffe0fe6:P)
-                                          0004(fffe149c:P)
-                                          0005(fffe19b6:P)
-                 _g_f4_modv
-                                 000005cc 0004(fffe0cde:P)
-                                          0004(fffe0f0a:P)
-                                          0004(fffe0fee:P)
-                                          0004(fffe14a7:P)
-                                          0005(fffe19be:P)
-                 _g_f4_modw
-                                 000005d0 0004(fffe0ce6:P)
-                                          0004(fffe0f12:P)
-                                          0004(fffe0ff6:P)
-                                          0004(fffe14b2:P)
-                                          0005(fffe19c6:P)
-                 _rotor_speed
-                                 000005d4 0004(fffe0cfc:P)
-                                          0004(fffe0eaa:P)
-                                          0004(fffe0f8e:P)
-                                          0005(fffe171d:P)
-                 _id_ACR
-                                 000005ec 0004(fffe0cee:P)
-                                          0004(fffe0ea2:P)
-                                          0004(fffe0f86:P)
-                                          0005(fffe16e9:P)
-                 _mtr_p
-                                 00000604 0004(fffe0d3c:P)
-                                          0004(fffe10b8:P)
-                                          0005(fffe1791:P)
-                                          0005(fffe1aca:P)
-                 _g_f4_kp_speed
-                                 00000628 0004(fffe0b42:P)
-                                          0004(fffe0d20:P)
-                                          0004(fffe1082:P)
-                                          0004(fffe13f3:P)
-                 _g_f4_ki_speed
-                                 0000062c 0004(fffe0b4e:P)
-                                          0004(fffe108b:P)
-                                          0004(fffe13fc:P)
-                 _g_f4_lim_iq
-                                 00000630 0004(fffe0b7c:P)
-                                          0004(fffe1405:P)
-                 _g_f4_ilim_iq
-                                 00000634 0004(fffe0b94:P)
-                                          0004(fffe140e:P)
-                 _g_f4_max_speed_rad
-                                 00000638 0004(fffe0bec:P)
-                                          0004(fffe10d5:P)
-                                          0004(fffe137f:P)
-                 _g_f4_min_speed_rad
-                                 0000063c 0004(fffe0bf8:P)
-                                          0004(fffe1115:P)
-                 _g_f4_id_ref_buff
-                                 00000640 0004(fffe0c6a:P)
+                                 0000043e 0004(fffe0a86:P)
                                           0004(fffe0e52:P)
                                           0004(fffe0f36:P)
-                                          0004(fffe1433:P)
+                 _g_u2_cnt_adjust
+                                 00000440 0004(fffe0c6b:P)
+                                          0004(fffe0e10:P)
+                                          0005(fffe1531:P)
+                                          0005(fffe1a6c:P)
+                 _g_u2_cnt_id_const
+                                 00000442 0004(fffe0da6:P)
+                                          0004(fffe0f23:P)
+                                          0004(fffe1007:P)
+                                          0004(fffe1486:P)
+     SECTION=B
+                 _g_f4_vdc_ad
+                                 0000050c 0004(fffe0a9f:P)
+                                          0004(fffe12b4:P)
+                                          0005(fffe1512:P)
+                                          0005(fffe164a:P)
+                                          0005(fffe1934:P)
+                                          0005(fffe19a3:P)
+                                          0012(fffe2074:P)
+                 _g_f4_vd_ref
+                                 00000510 0004(fffe0aa7:P)
+                                          0004(fffe0e6b:P)
+                                          0004(fffe0f4f:P)
+                                          0005(fffe177a:P)
+                 _g_f4_vq_ref
+                                 00000514 0004(fffe0aaf:P)
+                                          0004(fffe0e73:P)
+                                          0004(fffe0f57:P)
+                                          0005(fffe1782:P)
+                 _g_f4_iu_ad
+                                 00000518 0004(fffe0ab7:P)
+                                          0004(fffe1261:P)
+                                          0005(fffe1504:P)
+                                          0012(fffe2086:P)
+                 _g_f4_pre_iu_ad
+                                 0000051c 0004(fffe0abf:P)
+                                          0005(fffe156c:P)
+                 _g_f4_iv_ad
+                                 00000520 0004(fffe0ac7:P)
+                                          0004(fffe1286:P)
+                                          0005(fffe14fe:P)
+                                          0012(fffe2080:P)
+                 _g_f4_pre_iv_ad
+                                 00000524 0004(fffe0acf:P)
+                                          0005(fffe15a2:P)
+                 _g_f4_iw_ad
+                                 00000528 0004(fffe0ad7:P)
+                                          0004(fffe129d:P)
+                                          0005(fffe14f8:P)
+                                          0012(fffe207a:P)
+                 _g_f4_pre_iw_ad
+                                 0000052c 0004(fffe0adf:P)
+                                          0005(fffe15bb:P)
+                 _g_f4_offset_iu
+                                 00000530 0004(fffe0ae7:P)
+                                          0005(fffe1542:P)
+                 _g_f4_offset_iv
+                                 00000534 0004(fffe0aef:P)
+                                          0005(fffe155a:P)
+                 _g_f4_offset_iw
+                                 00000538 0004(fffe0af7:P)
+                                          0005(fffe1560:P)
+                 _g_f4_id_lpf
+                                 0000053c 0004(fffe0aff:P)
+                                          0005(fffe1691:P)
+                 _g_f4_iq_lpf
+                                 00000540 0004(fffe0b07:P)
+                                          0005(fffe16ae:P)
+                 _g_f4_pre_id_lpf
+                                 00000544 0004(fffe0b0f:P)
+                 _g_f4_pre_iq_lpf
+                                 00000548 0004(fffe0b17:P)
+                 _g_f4_kp_id
+                                 0000054c 0004(fffe0b1f:P)
+                                          0005(fffe16ea:P)
+                 _g_f4_ki_id
+                                 00000550 0004(fffe0b2d:P)
+                                          0005(fffe16f3:P)
+                 _g_f4_lim_id
+                                 00000554 0004(fffe0b69:P)
+                                          0005(fffe16fc:P)
+                 _g_f4_ilim_id
+                                 00000558 0004(fffe0b87:P)
+                                          0005(fffe1705:P)
+                 _g_f4_kp_iq
+                                 0000055c 0004(fffe0b35:P)
+                                          0004(fffe10a4:P)
+                                          0005(fffe171f:P)
+                 _g_f4_ki_iq
+                                 00000560 0004(fffe0b43:P)
+                                          0004(fffe10ad:P)
+                                          0005(fffe172a:P)
+                 _g_f4_lim_rotor_speed_rad
+                                 00000564 0004(fffe0b71:P)
+                                          0004(fffe1153:P)
+                                          0005(fffe1733:P)
+                 _g_f4_ilim_rotor_speed_rad
+                                 00000568 0004(fffe0b8f:P)
+                                          0004(fffe115b:P)
+                                          0005(fffe173c:P)
+                 _g_f4_id_ref
+                                 0000056c 0004(fffe0b9f:P)
+                                          0004(fffe0e7b:P)
+                                          0004(fffe0f5f:P)
+                                          0004(fffe14a7:P)
+                                          0005(fffe16d7:P)
+                                          0005(fffe1aa7:P)
+                 _g_f4_id_ref2
+                                 00000570 0004(fffe0ba7:P)
+                                          0004(fffe0e83:P)
+                                          0004(fffe0f67:P)
+                                          0005(fffe16c1:P)
+                 _g_f4_iq_ref
+                                 00000574 0004(fffe0baf:P)
+                                          0004(fffe0e8b:P)
+                                          0004(fffe0f6f:P)
+                                          0004(fffe143e:P)
+                                          0005(fffe16c9:P)
+                 _g_f4_ref_stator_speed_rad
+                                 00000578 0004(fffe0bb7:P)
+                                          0004(fffe0e93:P)
+                                          0004(fffe0f77:P)
+                                          0005(fffe1767:P)
+                 _g_f4_slip_speed_rad
+                                 0000057c 0004(fffe0bbf:P)
+                                          0004(fffe0e9b:P)
+                                          0004(fffe0f7f:P)
+                                          0005(fffe175a:P)
+                 _g_f4_slip_k
+                                 00000580 0004(fffe0bc7:P)
+                                          0004(fffe0ea3:P)
+                                          0004(fffe0f87:P)
+                                          0005(fffe1752:P)
+                                          0005(fffe1ab6:P)
+                 _g_f4_speed_rad
+                                 00000584 0004(fffe0bcf:P)
+                                          0004(fffe0edb:P)
+                                          0004(fffe0fbf:P)
+                                          0004(fffe123f:P)
+                                          0004(fffe12e0:P)
+                                          0005(fffe16cf:P)
+                                          0005(fffe1a0a:P)
+                 _g_f4_ref_speed_rad_pi
+                                 00000588 0004(fffe0bd7:P)
+                                          0004(fffe0ee3:P)
+                                          0004(fffe0fc7:P)
+                                          0004(fffe13b6:P)
+                                          0005(fffe1a18:P)
+                 _g_f4_ref_speed_rad
+                                 0000058c 0004(fffe0bdf:P)
+                                          0004(fffe108a:P)
+                                          0004(fffe132b:P)
+                 _g_f4_angle_rad
+                                 00000590 0004(fffe0be7:P)
+                                          0004(fffe0eeb:P)
+                                          0004(fffe0fcf:P)
+                                          0005(fffe1652:P)
+                 _g_f4_refu
+                                 00000594 0004(fffe0c07:P)
+                                          0004(fffe0ec3:P)
+                                          0004(fffe0fa7:P)
+                                          0005(fffe1855:P)
+                 _g_f4_refv
+                                 00000598 0004(fffe0c0f:P)
+                                          0004(fffe0ecb:P)
+                                          0004(fffe0faf:P)
+                                          0005(fffe18a4:P)
+                 _g_f4_refw
+                                 0000059c 0004(fffe0c17:P)
+                                          0004(fffe0ed3:P)
+                                          0004(fffe0fb7:P)
+                                          0005(fffe18c2:P)
+                 _g_f4_inv_limit
+                                 000005a0 0004(fffe0c1f:P)
+                                          0005(fffe193c:P)
+                 _g_f4_speed_lpf_k
+                                 000005a4 0004(fffe0c2b:P)
+                                          0004(fffe10b6:P)
+                 _g_f4_current_lpf_k
+                                 000005a8 0004(fffe0c3d:P)
+                                          0004(fffe10bf:P)
+                                          0005(fffe157b:P)
+                 _g_f4_offset_lpf_k
+                                 000005ac 0004(fffe0c4b:P)
+                                          0004(fffe10db:P)
+                                          0005(fffe15d6:P)
+                 _g_f4_temp_speed_rad
+                                 000005b0 0004(fffe0c9b:P)
+                                          0004(fffe1375:P)
+                                          0004(fffe1400:P)
+                                          0005(fffe1a04:P)
+                 _g_f4_temp_ref_speed_rad
+                                 000005b4 0004(fffe0ca3:P)
+                                          0004(fffe130a:P)
+                                          0004(fffe13f8:P)
+                                          0005(fffe1a12:P)
+                 _g_f4_angle_compensation
+                                 000005b8 0004(fffe0cab:P)
+                                          0004(fffe1197:P)
+                                          0005(fffe17c1:P)
+                 _g_f4_offset_calc_time
+                                 000005bc 0004(fffe0cb7:P)
+                                          0004(fffe0e31:P)
+                                          0004(fffe11a8:P)
+                                          0005(fffe1520:P)
+                                          0005(fffe1a64:P)
+                 _g_f4_voltage_drop
+                                 000005c0 0004(fffe0ccb:P)
+                                          0004(fffe11b1:P)
+                                          0005(fffe18d9:P)
+                 _g_f4_voltage_drop_k
+                                 000005c4 0004(fffe0cd7:P)
+                                          0004(fffe11ba:P)
+                                          0005(fffe18d1:P)
+                 _g_f4_modu
+                                 000005c8 0004(fffe0cdf:P)
+                                          0004(fffe0f0b:P)
+                                          0004(fffe0fef:P)
+                                          0004(fffe14ba:P)
+                                          0005(fffe19af:P)
+                 _g_f4_modv
+                                 000005cc 0004(fffe0ce7:P)
+                                          0004(fffe0f13:P)
+                                          0004(fffe0ff7:P)
+                                          0004(fffe14c5:P)
+                                          0005(fffe19b7:P)
+                 _g_f4_modw
+                                 000005d0 0004(fffe0cef:P)
+                                          0004(fffe0f1b:P)
+                                          0004(fffe0fff:P)
+                                          0004(fffe14d0:P)
+                                          0005(fffe19bf:P)
+                 _rotor_speed
+                                 000005d4 0004(fffe0d05:P)
+                                          0004(fffe0eb3:P)
+                                          0004(fffe0f97:P)
+                                          0005(fffe1716:P)
+                 _id_ACR
+                                 000005ec 0004(fffe0cf7:P)
+                                          0004(fffe0eab:P)
+                                          0004(fffe0f8f:P)
+                                          0005(fffe16e2:P)
+                 _mtr_p
+                                 00000604 0004(fffe0d45:P)
+                                          0004(fffe10c8:P)
+                                          0005(fffe178a:P)
+                                          0005(fffe1ac3:P)
+                 _g_f4_kp_speed
+                                 00000628 0004(fffe0b4b:P)
+                                          0004(fffe0d29:P)
+                                          0004(fffe1092:P)
+                                          0004(fffe1411:P)
+                 _g_f4_ki_speed
+                                 0000062c 0004(fffe0b57:P)
+                                          0004(fffe109b:P)
+                                          0004(fffe141a:P)
+                 _g_f4_lim_iq
+                                 00000630 0004(fffe0b7f:P)
+                                          0004(fffe1423:P)
+                 _g_f4_ilim_iq
+                                 00000634 0004(fffe0b97:P)
+                                          0004(fffe142c:P)
+                 _g_f4_max_speed_rad
+                                 00000638 0004(fffe0bef:P)
+                                          0004(fffe10e5:P)
+                                          0004(fffe139d:P)
+                 _g_f4_min_speed_rad
+                                 0000063c 0004(fffe0bfb:P)
+                                          0004(fffe1125:P)
+                 _g_f4_id_ref_buff
+                                 00000640 0004(fffe0c73:P)
+                                          0004(fffe0e5b:P)
+                                          0004(fffe0f3f:P)
+                                          0004(fffe1451:P)
                  _g_f4_iq_ref_buff
-                                 00000644 0004(fffe0c72:P)
-                                          0004(fffe0e5a:P)
-                                          0004(fffe0f3e:P)
-                                          0004(fffe13af:P)
+                                 00000644 0004(fffe0c7b:P)
+                                          0004(fffe0e63:P)
+                                          0004(fffe0f47:P)
+                                          0004(fffe13cd:P)
                  _g_f4_boot_id_up_step
-                                 00000648 0004(fffe0d79:P)
-                                          0004(fffe114d:P)
-                                          0004(fffe144d:P)
+                                 00000648 0004(fffe0d82:P)
+                                          0004(fffe116b:P)
+                                          0004(fffe146b:P)
                  _g_f4_fluctuation_limit
-                                 0000064c 0004(fffe0d85:P)
-                                          0004(fffe1170:P)
-                                          0004(fffe135f:P)
+                                 0000064c 0004(fffe0d8e:P)
+                                          0004(fffe118e:P)
+                                          0004(fffe137d:P)
                  _g_f4_ctrl_ref_id
-                                 00000650 0004(fffe0d91:P)
-                                          0004(fffe1145:P)
-                                          0004(fffe143b:P)
+                                 00000650 0004(fffe0d9a:P)
+                                          0004(fffe1163:P)
+                                          0004(fffe1459:P)
                  _g_f4_id_const_time
-                                 00000654 0004(fffe0da5:P)
-                                          0004(fffe1156:P)
-                                          0004(fffe1470:P)
+                                 00000654 0004(fffe0dae:P)
+                                          0004(fffe1174:P)
+                                          0004(fffe148e:P)
                  _g_f4_accel
-                                 00000658 0004(fffe0cba:P)
-                                          0004(fffe1167:P)
-                                          0004(fffe1315:P)
+                                 00000658 0004(fffe0cc3:P)
+                                          0004(fffe1185:P)
+                                          0004(fffe1333:P)
                  _g_f4_ipm_temperature_ad
-                                 0000065c 0004(fffe0db1:P)
+                                 0000065c 0004(fffe0dba:P)
                  _speed
-                                 00000660 0004(fffe0d12:P)
-                                          0004(fffe0eb2:P)
-                                          0004(fffe0f96:P)
-                                          0004(fffe13eb:P)
+                                 00000660 0004(fffe0d1b:P)
+                                          0004(fffe0ebb:P)
+                                          0004(fffe0f9f:P)
+                                          0004(fffe1409:P)
                  _ics_input_buff
-                                 00000678 0004(fffe0db9:P)
-                                          0004(fffe1052:P)
-                                          0004(fffe11a6:P)
+                                 00000678 0004(fffe0dc2:P)
+                                          0004(fffe105b:P)
+                                          0004(fffe11c4:P)
      SECTION=P
                  _R_MTR_InitSequence
-                                 fffe09e1 0003(fffe064b:P)
+                                 fffe09ea 0003(fffe064b:P)
                  _R_MTR_ExecEvent
-                                 fffe09eb 0003(fffe066d:P)
+                                 fffe09f4 0003(fffe066d:P)
                                           0003(fffe07b5:P)
-                                          0004(fffe1261:P)
-                                          0004(fffe1278:P)
-                                          0004(fffe128f:P)
-                                          0004(fffe12a8:P)
-                                          0004(fffe12bb:P)
-                                          0004(fffe12d8:P)
-                                          0005(fffe14c0:P)
+                                          0004(fffe127f:P)
+                                          0004(fffe1296:P)
+                                          0004(fffe12ad:P)
+                                          0004(fffe12c6:P)
+                                          0004(fffe12d9:P)
+                                          0004(fffe12f6:P)
+                                          0005(fffe14de:P)
                  _mtr_pi_ctrl
-                                 fffe1005 0004(fffe1416:P)
-                                          0005(fffe1714:P)
-                                          0005(fffe174b:P)
+                                 fffe100e 0004(fffe1434:P)
+                                          0005(fffe170d:P)
+                                          0005(fffe1744:P)
                  _mtr_set_variables
-                                 fffe104a 0005(fffe19f5:P)
+                                 fffe1053 0005(fffe19ee:P)
                  _R_MTR_IcsInput
-                                 fffe11a4 0003(fffe0798:P)
+                                 fffe11c2 0003(fffe0798:P)
                  _R_MTR_SetDir
-                                 fffe1216
+                                 fffe1234
                  _R_MTR_GetSpeed
-                                 fffe121f
+                                 fffe123d
                  _R_MTR_GetDir
-                                 fffe122f 0003(fffe06b6:P)
+                                 fffe124d 0003(fffe06b6:P)
                  _R_MTR_GetStatus
-                                 fffe1238 0003(fffe07b9:P)
+                                 fffe1256 0003(fffe07b9:P)
                  _mtr_error_check
-                                 fffe1241 0005(fffe165d:P)
+                                 fffe125f
                  _mtr_set_speed_ref
-                                 fffe12e0 0005(fffe1a85:P)
-                                          0005(fffe1aa1:P)
+                                 fffe12fe 0005(fffe1a7e:P)
+                                          0005(fffe1a9a:P)
                  _mtr_set_iq_ref
-                                 fffe13a1 0005(fffe1a89:P)
-                                          0005(fffe1aa5:P)
+                                 fffe13bf 0005(fffe1a82:P)
+                                          0005(fffe1a9e:P)
                  _mtr_set_id_ref
-                                 fffe1429 0005(fffe1a8d:P)
-                                          0005(fffe1aa9:P)
+                                 fffe1447 0005(fffe1a86:P)
+                                          0005(fffe1aa2:P)
                  _mtr_calc_mod
-                                 fffe1490 0005(fffe19b1:P)
+                                 fffe14ae 0005(fffe19aa:P)
      SECTION=C_1
      SECTION=D
      SECTION=R
@@ -1962,13 +1962,13 @@ No   Unit Name   Global.Symbol   Location External Infomation
 0006 r_init_clock
      SECTION=P
                  _R_INIT_Clock
-                                 fffe1adf 0010(fffe1b7f:P)
+                                 fffe1ad8 0010(fffe1b78:P)
                  _CGC_oscillation_main
-                                 fffe1b11
+                                 fffe1b0a
                  _CGC_oscillation_PLL
-                                 fffe1b36 0006(fffe1af0:P)
+                                 fffe1b2f 0006(fffe1ae9:P)
                  _CGC_oscillation_HOCO
-                                 fffe1b48 0006(fffe1aed:P)
+                                 fffe1b41 0006(fffe1ae6:P)
 0007 resetprg
      SECTION=PResetPRG
                  _PowerON_Reset_PC
@@ -1979,7 +1979,7 @@ No   Unit Name   Global.Symbol   Location External Infomation
 0008 sbrk
      SECTION=P
                  _sbrk
-                                 fffe1b56
+                                 fffe1b4f
      SECTION=D
      SECTION=B
      SECTION=R
@@ -1999,129 +1999,126 @@ No   Unit Name   Global.Symbol   Location External Infomation
 0010 mtr_ctrl_rx13t48
      SECTION=P
                  _R_MTR_InitHardware
-                                 fffe1b77 0003(fffe0640:P)
+                                 fffe1b70 0003(fffe0640:P)
                  _mtr_init_module
-                                 fffe1b93 0010(fffe1b78:P)
+                                 fffe1b8c 0010(fffe1b71:P)
                  _mtr_init_cmt
-                                 fffe1bbd 0010(fffe1b83:P)
+                                 fffe1bb6 0010(fffe1b7c:P)
                  _mtr_init_poe3
-                                 fffe1c1b 0010(fffe1b8a:P)
+                                 fffe1c14 0010(fffe1b83:P)
                  _init_wdt
-                                 fffe1c74 0010(fffe1b91:P)
+                                 fffe1c6d 0010(fffe1b8a:P)
                  _clear_wdt
-                                 fffe1c99 0003(fffe067c:P)
+                                 fffe1c92 0003(fffe067c:P)
                  _mtr_clear_oc_flag
-                                 fffe1ca5 0005(fffe14cd:P)
+                                 fffe1c9e 0005(fffe14eb:P)
                  _mtr_clear_cmt0_flag
-                                 fffe1cad 0005(fffe1ad6:P)
+                                 fffe1ca6 0005(fffe1acf:P)
 0011 mtr_ctrl_rx13t48_t1102
      SECTION=P
                  _mtr_init_mtu
-                                 fffe1cb5 0010(fffe1b86:P)
+                                 fffe1cae 0010(fffe1b7f:P)
                  _mtr_init_io_port
-                                 fffe1dd8 0010(fffe1b7b:P)
+                                 fffe1dd1 0010(fffe1b74:P)
                  _mtr_init_ad_converter
-                                 fffe1e59 0010(fffe1b8d:P)
+                                 fffe1e52 0010(fffe1b86:P)
                  _init_ui
-                                 fffe1f22 0003(fffe0644:P)
+                                 fffe1f1b 0003(fffe0644:P)
                  _mtr_ctrl_start
-                                 fffe1f6a 0004(fffe0a38:P)
+                                 fffe1f63 0004(fffe0a41:P)
                  _mtr_ctrl_stop
-                                 fffe1f96 0004(fffe0a53:P)
-                                          0004(fffe0df9:P)
+                                 fffe1f8f 0004(fffe0a5c:P)
+                                          0004(fffe0e02:P)
                  _mtr_get_iuiviwvdc
-                                 fffe1fc2 0005(fffe14f9:P)
-                                          0012(fffe20a5:P)
+                                 fffe1fbb 0005(fffe1517:P)
+                                          0012(fffe209e:P)
                  _mtr_get_ipm_temperature
-                                 fffe1fea
+                                 fffe1fe3
                  _mtr_clear_mtu4_flag
-                                 fffe1ff2 0005(fffe19fc:P)
+                                 fffe1feb 0005(fffe19f5:P)
                  _mtr_inv_set_uvw
-                                 fffe1ffa 0005(fffe19cd:P)
+                                 fffe1ff3 0005(fffe19c6:P)
                  _mtr_init_register
-                                 fffe2067 0004(fffe0a57:P)
-                                          0004(fffe0dfd:P)
+                                 fffe2060 0004(fffe0a60:P)
+                                          0004(fffe0e06:P)
 0012 mtr_ctrl_t1102
      SECTION=P
                  _R_MTR_ChargeCapacitor
-                                 fffe2077 0003(fffe0673:P)
+                                 fffe2070 0003(fffe0673:P)
                  _ic_gate_on
-                                 fffe20b9 0012(fffe20b8:P)
+                                 fffe20b0
                  _led1_on
-                                 fffe20c1 0003(fffe07ef:P)
+                                 fffe20b8 0003(fffe07ee:P)
                  _led2_on
-                                 fffe20c9 0003(fffe0803:P)
+                                 fffe20c0 0003(fffe0802:P)
                  _led1_off
-                                 fffe20d1 0003(fffe07e1:P)
-                                          0003(fffe07fd:P)
+                                 fffe20c8 0003(fffe07e0:P)
+                                          0003(fffe07fc:P)
                  _led2_off
-                                 fffe20d9 0003(fffe07e7:P)
-                                          0003(fffe07f5:P)
+                                 fffe20d0 0003(fffe07e6:P)
+                                          0003(fffe07f4:P)
                  _get_sw1
-                                 fffe20e1
+                                 fffe20d8
                  _get_sw2
-                                 fffe20ed
+                                 fffe20e4
                  _get_sw3
-                                 fffe20f9
+                                 fffe20f0
                  _get_vr1
-                                 fffe2103
+                                 fffe20fa
 0013 cosf
      SECTION=P
                  _cosl
-                                 fffe210b
+                                 fffe2102
                  _cos
-                                 fffe210d 0013(fffe210c:P)
+                                 fffe2102
                  _cosf
-                                 fffe210f 0005(fffe1669:P)
-                                          0005(fffe1803:P)
-                                          0013(fffe210e:P)
+                                 fffe2102 0005(fffe1662:P)
+                                          0005(fffe17fc:P)
 0014 sinf
      SECTION=P
                  _sinl
-                                 fffe213f
+                                 fffe2132
                  _sin
-                                 fffe2141 0014(fffe2140:P)
+                                 fffe2132
                  _sinf
-                                 fffe2143 0005(fffe1671:P)
-                                          0005(fffe180b:P)
-                                          0014(fffe2142:P)
+                                 fffe2132 0005(fffe166a:P)
+                                          0005(fffe1804:P)
 0015 copysignf
      SECTION=P
                  _copysignl
-                                 fffe2180
+                                 fffe216f
                  _copysign
-                                 fffe2182 0015(fffe2181:P)
+                                 fffe216f
                  _copysignf
-                                 fffe2184 0004(fffe102a:P)
-                                          0004(fffe1042:P)
-                                          0004(fffe131f:P)
-                                          0004(fffe1391:P)
-                                          0005(fffe18f5:P)
-                                          0005(fffe1912:P)
-                                          0005(fffe192f:P)
-                                          0005(fffe1960:P)
-                                          0005(fffe1975:P)
-                                          0005(fffe198a:P)
-                                          0015(fffe2183:P)
+                                 fffe216f 0004(fffe1033:P)
+                                          0004(fffe104b:P)
+                                          0004(fffe133d:P)
+                                          0004(fffe13af:P)
+                                          0005(fffe18ee:P)
+                                          0005(fffe190b:P)
+                                          0005(fffe1928:P)
+                                          0005(fffe1959:P)
+                                          0005(fffe196e:P)
+                                          0005(fffe1983:P)
 0016 __initsct
      SECTION=P
                  __INITSCT
-                                 fffe219b 0007(fffe0018:PResetPRG)
+                                 fffe2185 0007(fffe0018:PResetPRG)
      SECTION=C$BSEC
      SECTION=C$DSEC
 0017 ICS2_RX13T
      SECTION=P
                  _ics_int_sci_rxi
-                                 fffe2295 0002(fffe060e:PIntPRG)
+                                 fffe227f 0002(fffe060e:PIntPRG)
                  _ics2_watchpoint
-                                 fffe24df 0005(fffe19e6:P)
+                                 fffe24c9 0005(fffe19df:P)
                  _ics2_init
-                                 fffe2926 0003(fffe0663:P)
+                                 fffe2910 0003(fffe0663:P)
                  _ics2_version
-                                 fffe2c26
+                                 fffe2c10
                  _ics_int_sci_eri
-                                 fffe2c2c 0002(fffe0600:PIntPRG)
-                                          0017(fffe28f5:P)
+                                 fffe2c16 0002(fffe0600:PIntPRG)
+                                          0017(fffe28df:P)
      SECTION=D_2
      SECTION=D_1
      SECTION=B
@@ -2135,46 +2132,44 @@ No   Unit Name   Global.Symbol   Location External Infomation
 0018 sincosfsub
      SECTION=P
                  ___poly_sinf
-                                 fffe2c63 0014(fffe2166:P)
-                                          0018(fffe2cc7:P)
+                                 fffe2c4d 0014(fffe2155:P)
+                                          0018(fffe2cb1:P)
                                           0018(00000ba0:R)
                  ___poly_cosf
-                                 fffe2c94 0013(fffe2134:P)
-                                          0018(fffe2cbd:P)
+                                 fffe2c7e 0013(fffe2127:P)
+                                          0018(fffe2ca7:P)
                                           0018(00000ba4:R)
                  ___internal_sincosf
-                                 fffe2cfb 0013(fffe213c:P)
-                                          0014(fffe2177:P)
-                                          0014(fffe217d:P)
-                                          0018(fffe2cfa:P)
+                                 fffe2ce3 0013(fffe212f:P)
+                                          0014(fffe2166:P)
+                                          0014(fffe216c:P)
      SECTION=D
      SECTION=R
 0019 fmodf
      SECTION=P
                  _fmodl
-                                 fffe2d4d
+                                 fffe2d35
                  _fmod
-                                 fffe2d4f 0019(fffe2d4e:P)
+                                 fffe2d35
                  _fmodf
-                                 fffe2d51 0018(fffe2cf2:P)
-                                          0019(fffe2d50:P)
+                                 fffe2d35 0018(fffe2cdc:P)
 0020 nanfval
      SECTION=P
                  ___nanf_value
-                                 fffe2d80 0018(fffe2ce8:P)
+                                 fffe2d64 0018(fffe2cd2:P)
 0021 _errno
      SECTION=B
                  __errno
-                                 00000b3c 0018(fffe2cde:P)
-                                          0019(fffe2d71:P)
+                                 00000b3c 0018(fffe2cc8:P)
+                                          0019(fffe2d55:P)
 0022 _i_fmds
      SECTION=P
                  __in_fmods
-                                 fffe2d87 0019(fffe2d56:P)
+                                 fffe2d6b 0019(fffe2d3a:P)
 0023 floatval
      SECTION=C
                  __FLT_MAX_VAL
-                                 fffe006c 0022(fffe2df5:P)
+                                 fffe006c 0022(fffe2dd6:P)
                  __FLT_MIN_VAL
                                  fffe0070
                  __DBL_MAX_VAL
@@ -2194,7 +2189,7 @@ No   Unit Name   Global.Symbol   Location External Infomation
                  __NIFINFD
                                  fffe00a4
                  __IFNANS
-                                 fffe00ac 0022(fffe2e55:P)
+                                 fffe00ac 0022(fffe2e31:P)
                  __IFINFS
                                  fffe00b0
                  __NIFINFS
