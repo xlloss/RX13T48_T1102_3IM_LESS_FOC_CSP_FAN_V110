@@ -197,17 +197,12 @@ setpsw_i();
             continue;
         }
 
-        if (get_motor_enable())
+        motor_enable = get_motor_enable();
+
+        if (!motor_enable)
             R_MTR_ExecEvent(MTR_MODE_RUN);
         else
             R_MTR_ExecEvent(MTR_MODE_STOP);
-
-        motor_enable = get_motor_enable();
-
-        if (g_s2_mode_system != motor_enable) {
-            g_s2_mode_system = motor_enable;
-            R_MTR_ExecEvent((uint8)g_s2_mode_system);
-        }
 
         g_u1_motor_status = R_MTR_GetStatus();
 

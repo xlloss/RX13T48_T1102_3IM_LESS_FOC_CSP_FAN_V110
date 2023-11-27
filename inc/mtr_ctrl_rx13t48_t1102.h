@@ -81,7 +81,7 @@
                                                                /* 110 * 1.414 = 113, 95 is buffer  */
 #define     MTR_OVERIPMTEMPERATURE_LIMIT (3)                   /* over temperature limit [V] (3[V]=60Å}10[Åé]) */
 
-#define     MTR_ENABLE              (PORTB.PIDR.BIT.B2)        /* motor enable 0: enable, 1: disable */
+#define     MTR_ENABLE              (PORTB.PIDR.BIT.B2)        /* motor enable 1: enable, 0: disable */
 #define     MTR_IC_GATE_ON          (1)                        /* active level of gate for preventing the inrush current */
 
 #define     MTR_PORT_SW1            (PORTB.PIDR.BIT.B5)        /* input port of SW1 */
