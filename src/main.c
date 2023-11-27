@@ -44,6 +44,8 @@
 /******************************************************************************
 * Private global variables and functions
 ******************************************************************************/
+uint32   cp_max_speed_rpm;
+uint32   cp_min_speed_rpm;
 int16    g_boot_delay;
 uint8    mp_pole_pairs;
 uint8    mtr_pole_pairs;
@@ -119,10 +121,25 @@ void switch_pole()
 {
     #define POLE_PAIRS_2 2
     #define POLE_PAIRS_3 3
+    int32 mtr_max_speed_rpm = 0;
+    int32 mtr_min_speed_rpm = 0;
+
     mp_pole_pairs = MTR_PORT_POLE_PAIRS == 1 ? POLE_PAIRS_2 : POLE_PAIRS_3;
     mtr_pole_pairs = mp_pole_pairs;
-    mtr_max_speed_rad = (MTR_MAX_SPEED_RPM * mtr_pole_pairs * MTR_TWOPI / 60);
-    mtr_min_speed_rad = (MTR_MIN_SPEED_RPM * mtr_pole_pairs * MTR_TWOPI / 60);
+
+    if (mtr_pole_pairs == POLE_PAIRS_2) {
+        cp_max_speed_rpm = 1800;
+        cp_min_speed_rpm = 300;
+    } else {
+        cp_max_speed_rpm = 1200;
+        cp_min_speed_rpm = 200;
+    }
+
+    mtr_max_speed_rpm = cp_max_speed_rpm;
+    mtr_min_speed_rpm = cp_min_speed_rpm;
+
+    mtr_max_speed_rad = (mtr_max_speed_rpm * mtr_pole_pairs * MTR_TWOPI / 60);
+    mtr_min_speed_rad = (mtr_min_speed_rpm * mtr_pole_pairs * MTR_TWOPI / 60);
     mtr_speed_limit = (mtr_max_speed_rad * 1.3);
     mtr_limit_rotor_speed_rad = (mtr_max_speed_rad * 1.2);
     mtr_i_limit_rotor_speed_rad = (mtr_max_speed_rad * 1.2);
@@ -160,12 +177,12 @@ setpsw_i();
     {
         ics_ui();                                                   /* user interface using ICS */
 
-        vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+        vr1_to_rpm = (float32)((get_vr1() * cp_max_speed_rpm) >> ADC_BIT_N);
 
-        if (vr1_to_rpm < CP_MIN_SPEED_RPM)
-            vr1_to_rpm = CP_MIN_SPEED_RPM;
-        else if (rpm_to_rad > CP_MAX_SPEED_RPM)
-            vr1_to_rpm = CP_MAX_SPEED_RPM;
+        if (vr1_to_rpm < cp_min_speed_rpm)
+            vr1_to_rpm = cp_min_speed_rpm;
+        else if (rpm_to_rad > cp_max_speed_rpm)
+            vr1_to_rpm = cp_max_speed_rpm;
 
         rpm_to_rad = vr1_to_rpm * mtr_pole_pairs * MTR_RPM_RAD;
 
@@ -219,14 +236,14 @@ void ics_ui(void)
     int16 s2_temp;
 
     com_s2_get_vr1 = get_vr1();
-    com_f4_vr1_to_rpm = (float32)((get_vr1() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+    com_f4_vr1_to_rpm = (float32)((get_vr1() * cp_max_speed_rpm) >> ADC_BIT_N);
     g_u1_motor_dir_sw = get_sw1();
 
     g_u1_motor_enable = get_motor_enable();
     /*============================*/
     /*      get ICS value         */
     /*============================*/
-    com_s2_ref_speed_rpm = (com_s2_get_vr1 * CP_MAX_SPEED_RPM ) >> ADC_BIT_N;
+    com_s2_ref_speed_rpm = (com_s2_get_vr1 * cp_max_speed_rpm ) >> ADC_BIT_N;
     /***** limit variable *****/
     if (com_s2_ref_speed_rpm > com_s2_max_speed_rpm)
     {
