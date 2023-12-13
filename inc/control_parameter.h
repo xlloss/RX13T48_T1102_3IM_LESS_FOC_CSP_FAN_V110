@@ -37,8 +37,8 @@
 #define     CP_ID_PI_KI                (0.05)                  /* integral gain for gamma-axis current PI control */
 #define     CP_IQ_PI_KP                (0.5)                   /* proportional gain for delta-axis current PI control */
 #define     CP_IQ_PI_KI                (0.5)                   /* integral gain for delta-axis current PI control */
-#define     CP_SPEED_PI_KP             (1.0)                /* proportional gain for speed PI control */
-#define     CP_SPEED_PI_KI             (0.1)               /* integral gain for speed PI control */
+#define     CP_SPEED_PI_KP             (0.0025)                /* proportional gain for speed PI control */
+#define     CP_SPEED_PI_KI             (0.00005)               /* integral gain for speed PI control */
 #define     CP_SPEED_LPF_K             (0.3)                   /* speed LPF gain */
 #define     CP_CURRENT_LPF_K           (1.0)                   /* current LPF gain */
 #define     CP_OFFSET_LPF_K            (0.1)                   /* current offset LPF gain */
