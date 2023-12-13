@@ -306,7 +306,7 @@ void ics_ui(void)
 ******************************************************************************/
 void software_init(void)
 {
-    g_boot_delay                   = 1000;
+    g_boot_delay                   = BOOT_DELAY_TIME;
     g_boot_slow_start              = SLOW_START_TIME;
     vdc_ad_k                       = VDC_AD_K_2;
     g_u1_pole_pairs                = mp_pole_pairs;

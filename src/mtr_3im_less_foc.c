@@ -468,7 +468,7 @@ static void mtr_start_init(void)
 ******************************************************************************/
 static void mtr_stop_init(void)
 {
-    g_boot_delay  = 1000;
+    g_boot_delay  = BOOT_DELAY_TIME;
     g_boot_slow_start = SLOW_START_TIME;
     vdc_ad_k = VDC_AD_K_2;
     g_u2_run_mode = MTR_BOOT_MODE;

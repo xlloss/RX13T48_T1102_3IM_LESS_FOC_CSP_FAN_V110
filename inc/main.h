@@ -76,6 +76,7 @@
 #define VDC_AD_K_1 0.10           /* current 1.5 AMP */
 #define VDC_AD_K_2 0.05           /* current 0.5 AMP */
 #define SLOW_START_TIME           6000
+#define BOOT_DELAY_TIME           1000
 /******************************************************************************
 * Private global functions
 ******************************************************************************/
