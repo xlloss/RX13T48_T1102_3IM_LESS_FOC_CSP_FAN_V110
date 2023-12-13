@@ -192,7 +192,7 @@ setpsw_i();
         else
             g_f4_ref_speed_rad = -rpm_to_rad;
 
-        if (g_boot_delay != 0) {
+        if (g_boot_delay > 0) {
             clear_wdt();
             continue;
         }
@@ -250,7 +250,6 @@ void ics_ui(void)
     }
 
     /***** When com_s2_enable_sw and g_s2_enable_sw are same value, rewrite enable. *****/
-    if (com_s2_enable_write == g_s2_enable_write)
     {
         /* rotation direction */
         if(R_MTR_GetDir() != com_s2_direction)
