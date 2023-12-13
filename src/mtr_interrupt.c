@@ -354,7 +354,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.3f * g_f4_vdc_ad;
+    g_f4_inv_limit = 0.15f * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {
