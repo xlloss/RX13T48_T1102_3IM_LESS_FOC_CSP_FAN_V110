@@ -73,6 +73,7 @@ extern volatile uint8    g_u1_cnt_ics;              /* counter for period of cal
 /*********************/
 
 extern volatile int16    g_boot_delay;
+extern volatile int16    g_boot_slow_start;
 extern volatile float32  g_f4_vdc_ad;               /* inverter bus voltage */
 extern volatile float32  g_f4_vd_ref;               /* gamma-axis output voltage command */
 extern volatile float32  g_f4_vq_ref;               /* delta-axis output voltage command */
@@ -130,7 +131,7 @@ extern volatile float32  g_f4_modw;                 /* W phase modulation factor
 extern volatile MTR_PI_CTRL rotor_speed;            /* PI control structure */
 extern volatile MTR_PI_CTRL id_ACR;                 /* PI control structure */
 extern volatile MTR_PARAMETER mtr_p;                /* motor parameters and control parameters structure */
-
+extern volatile float32 vdc_ad_k;
 /******************************************************************************
 * Function Name : mtr_over_current_interrupt
 * Description   : POE0# interrupt
@@ -354,7 +355,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.15f * g_f4_vdc_ad;
+    g_f4_inv_limit = vdc_ad_k * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {
@@ -485,5 +486,9 @@ setpsw_i();
 
     if (g_boot_delay > 0)
         g_boot_delay--;
+
+    if (g_boot_slow_start > 0 && g_u1_mode_system == MTR_MODE_RUN)
+        g_boot_slow_start--;
+
 }
 

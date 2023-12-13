@@ -109,6 +109,9 @@ volatile float32  g_f4_modw;                        /* W phase modulation factor
 volatile MTR_PI_CTRL rotor_speed;                   /* PI control structure */
 volatile MTR_PI_CTRL id_ACR;                        /* PI control structure */
 volatile MTR_PARAMETER mtr_p;                       /* motor parameters and control parameters structure */
+extern volatile int16    g_boot_delay;
+extern volatile int16    g_boot_slow_start;
+extern volatile float32  vdc_ad_k;
 
 /******************************************************************************
 * Private global variables and functions
@@ -465,6 +468,9 @@ static void mtr_start_init(void)
 ******************************************************************************/
 static void mtr_stop_init(void)
 {
+    g_boot_delay  = 1000;
+    g_boot_slow_start = SLOW_START_TIME;
+    vdc_ad_k = VDC_AD_K_2;
     g_u2_run_mode = MTR_BOOT_MODE;
     g_u2_ctrl_mode = MTR_OPENLOOP_MODE;
     g_f4_id_ref_buff = 0;

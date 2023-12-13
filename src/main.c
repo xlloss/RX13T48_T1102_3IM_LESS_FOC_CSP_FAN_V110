@@ -47,6 +47,7 @@
 uint32   cp_max_speed_rpm;
 uint32   cp_min_speed_rpm;
 int16    g_boot_delay;
+int16    g_boot_slow_start;
 uint8    mp_pole_pairs;
 uint8    mtr_pole_pairs;
 float32  mtr_max_speed_rad;
@@ -96,6 +97,7 @@ uint8    g_u1_drive_sw_state;               /* drive ON/OFF sw status */
 uint8    g_u1_err_reset_sw_state;           /* error reset sw status */
 float32  g_f4_ref_speed_ad;                 /* ref speed value[digit] */
 int16    g_s2_ref_speed_rpm;                /* ref speed value[rpm]   */
+float32  vdc_ad_k;
 
 static void       ics_ui(void);
 static void       software_init(void);
@@ -195,6 +197,14 @@ setpsw_i();
             clear_wdt();
             goto CLR_WDT;
         }
+
+        if (g_boot_slow_start == 0)
+            vdc_ad_k = VDC_AD_K_0;
+        else if (g_boot_slow_start > 0 &&
+                 g_boot_slow_start < (SLOW_START_TIME / 2)) /* SLOW_START_TIME - 0 */
+            vdc_ad_k = VDC_AD_K_1;
+        else
+            vdc_ad_k = VDC_AD_K_2; /* SLOW_START_TIME - SLOW_START_TIME / 2 */
 
         motor_enable = get_motor_enable();
 
@@ -297,6 +307,8 @@ void ics_ui(void)
 void software_init(void)
 {
     g_boot_delay                   = 1000;
+    g_boot_slow_start              = SLOW_START_TIME;
+    vdc_ad_k                       = VDC_AD_K_2;
     g_u1_pole_pairs                = mp_pole_pairs;
     g_u1_motor_status              = 0;
     g_u1_motor_enable              = 0;
