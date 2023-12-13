@@ -155,9 +155,9 @@ void switch_pole()
 ******************************************************************************/
 void main(void)
 {
-    float32 vr1_to_rpm;
-    float32 rpm_to_rad;
     uint8_t motor_dir, motor_enable;
+    float32 vr1_to_rpm;
+    uint16 u2_ref_speed_ad;
 clrpsw_i();                                                         /* interrupt disable */
     R_MTR_InitHardware();                                           /* initialize peripheral function */
     init_ui();                                                      /* initialize peripheral function for user interface */
@@ -177,24 +177,23 @@ setpsw_i();
     {
         ics_ui();                                                   /* user interface using ICS */
 
-        vr1_to_rpm = (float32)((get_vr1() * cp_max_speed_rpm) >> ADC_BIT_N);
+        vr1_to_rpm = ((get_vr1() * cp_max_speed_rpm) >> ADC_BIT_N);
 
         if (vr1_to_rpm < cp_min_speed_rpm)
             vr1_to_rpm = cp_min_speed_rpm;
-        else if (rpm_to_rad > cp_max_speed_rpm)
+        else if (vr1_to_rpm > cp_max_speed_rpm)
             vr1_to_rpm = cp_max_speed_rpm;
 
-        rpm_to_rad = vr1_to_rpm * mtr_pole_pairs * MTR_RPM_RAD;
-
+        com_s2_ref_speed_rpm = vr1_to_rpm;
         motor_dir = get_sw1();
         if (MTR_CW == motor_dir)
-            g_f4_ref_speed_rad = rpm_to_rad;
+            com_s2_direction = MTR_CW;
         else
-            g_f4_ref_speed_rad = -rpm_to_rad;
+            com_s2_direction = M_CCW;
 
         if (g_boot_delay > 0) {
             clear_wdt();
-            continue;
+            goto CLR_WDT;
         }
 
         motor_enable = get_motor_enable();
@@ -204,15 +203,7 @@ setpsw_i();
         else
             R_MTR_ExecEvent(MTR_MODE_STOP);
 
-        g_u1_motor_status = R_MTR_GetStatus();
-
-        if (MTR_EVENT_RESET == g_s2_mode_system) {
-            if (MTR_MODE_STOP == g_u1_motor_status)
-                software_init();
-            else if (MTR_MODE_ERROR == g_u1_motor_status)
-                g_s2_mode_system   = MTR_MODE_ERROR;
-        }
-
+CLR_WDT:
         clear_wdt();                                                /* watch dog timer clear */
     }
 }
@@ -230,35 +221,8 @@ void ics_ui(void)
 {
     int16 s2_temp;
 
-    com_s2_get_vr1 = get_vr1();
-    com_f4_vr1_to_rpm = (float32)((get_vr1() * cp_max_speed_rpm) >> ADC_BIT_N);
-    g_u1_motor_dir_sw = get_sw1();
-
-    g_u1_motor_enable = get_motor_enable();
-    /*============================*/
-    /*      get ICS value         */
-    /*============================*/
-    com_s2_ref_speed_rpm = (com_s2_get_vr1 * cp_max_speed_rpm ) >> ADC_BIT_N;
-    /***** limit variable *****/
-    if (com_s2_ref_speed_rpm > com_s2_max_speed_rpm)
-    {
-        com_s2_ref_speed_rpm = com_s2_max_speed_rpm;
-    }
-    else if (com_s2_ref_speed_rpm < 0)
-    {
-        com_s2_ref_speed_rpm = 0;
-    }
-
     /***** When com_s2_enable_sw and g_s2_enable_sw are same value, rewrite enable. *****/
     {
-        /* rotation direction */
-        if(R_MTR_GetDir() != com_s2_direction)
-        {
-            if (com_s2_direction > M_CCW)
-            {
-                com_s2_direction = M_CCW;
-            }
-        }
         ics_input.s2_direction = com_s2_direction;
 
         /* reference speed */
@@ -321,27 +285,6 @@ void ics_ui(void)
         R_MTR_IcsInput(&ics_input);
 
         g_s2_enable_write ^= 1;                                 /* change every time 0 and 1 */
-    }
-
-    /***** LED control *****/
-    if (g_u1_motor_status == MTR_MODE_STOP)             /* check motor status */
-    {
-        led1_off();                                     /* LED1 off */
-        led2_off();                                     /* LED2 off */
-    }
-    else if (g_u1_motor_status == MTR_MODE_RUN)         /* check motor status */
-    {
-        led1_on();                                      /* LED1 on */
-        led2_off();                                     /* LED2 off */
-    }
-    else if (g_u1_motor_status == MTR_MODE_ERROR)       /* check motor status */
-    {
-        led1_off();                                     /* LED1 off */
-        led2_on();                                      /* LED2 on */
-    }
-    else
-    {
-        /* Do Nothing */
     }
 }
 
