@@ -790,6 +790,7 @@ void mtr_error_check(void)
         g_u1_error_status = MTR_OVER_VOLTAGE_ERROR;     /* over voltage error */
     }
 
+    #if defined(ENABLE_UNDERVOLTAGE_LIMIT)
     /*===================================*/
     /*     under voltage error check     */
     /*===================================*/
@@ -799,6 +800,7 @@ void mtr_error_check(void)
         g_u1_error_status = MTR_UNDER_VOLTAGE_ERROR;    /* under voltage error */
     }
 
+    #endif
     /*================================*/
     /*     over speed error check     */
     /*================================*/
