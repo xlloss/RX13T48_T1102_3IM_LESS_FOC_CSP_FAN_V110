@@ -72,8 +72,8 @@
 #define VR1_SCALING               (2500.0f/4095.0f)              /* for ref speed scaling */
 
 #define ADC_WORKAROUND            1
-#define VDC_AD_K_0 0.15           /* current 2.5 AMP */
-#define VDC_AD_K_1 0.10           /* current 1.5 AMP */
+#define VDC_AD_K_0 0.13           /* current 2.10 AMP */
+#define VDC_AD_K_1 0.08           /* current 1.5 AMP */
 #define VDC_AD_K_2 0.05           /* current 0.5 AMP */
 #define SLOW_START_TIME           6000
 #define BOOT_DELAY_TIME           1000
