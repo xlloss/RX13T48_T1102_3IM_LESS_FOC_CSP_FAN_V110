@@ -121,6 +121,7 @@ extern volatile float32 g_f4_ref_speed_rad;
 
 void switch_pole()
 {
+    #define POLE_PAIRS_1 1
     #define POLE_PAIRS_2 2
     #define POLE_PAIRS_3 3
     int32 mtr_max_speed_rpm = 0;
