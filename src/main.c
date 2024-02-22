@@ -253,27 +253,6 @@ void ics_ui(void)
             com_s2_mode_system = MTR_MODE_ERROR;
         }
     }
-
-    /***** LED control *****/
-    if (g_u1_motor_status == MTR_MODE_STOP)             /* check motor status */
-    {
-        led1_off();                                     /* LED1 off */
-        led2_off();                                     /* LED2 off */
-    }
-    else if (g_u1_motor_status == MTR_MODE_RUN)         /* check motor status */
-    {
-        led1_on();                                      /* LED1 on */
-        led2_off();                                     /* LED2 off */
-    }
-    else if (g_u1_motor_status == MTR_MODE_ERROR)       /* check motor status */
-    {
-        led1_off();                                     /* LED1 off */
-        led2_on();                                      /* LED2 on */
-    }
-    else
-    {
-        /* Do Nothing */
-    }
 }
 
 /******************************************************************************
