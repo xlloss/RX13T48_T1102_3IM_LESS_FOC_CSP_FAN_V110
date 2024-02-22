@@ -72,6 +72,7 @@
 #define VR1_SCALING               (2500.0f/4095.0f)              /* for ref speed scaling */
 
 #define ADC_WORKAROUND            1
+#define ADC_BIT_N 12
 /******************************************************************************
 * Private global functions
 ******************************************************************************/

@@ -80,7 +80,9 @@ uint8    g_u1_drive_sw_state;               /* drive ON/OFF sw status */
 uint8    g_u1_err_reset_sw_state;           /* error reset sw status */
 float32  g_f4_ref_speed_ad;                 /* ref speed value[digit] */
 int16    g_s2_ref_speed_rpm;                /* ref speed value[rpm]   */
-
+int16    com_s2_get_vr1;
+float32  com_f4_vr1_to_rpm;
+float32  vr1_to_rpm;
 static void       ics_ui(void);
 static void       software_init(void);
 
@@ -121,6 +123,14 @@ setpsw_i();
     /*** main routine ***/
     while (1)
     {
+        vr1_to_rpm = ((get_speed_adc() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+        if (vr1_to_rpm < CP_MIN_SPEED_RPM)
+            vr1_to_rpm = CP_MIN_SPEED_RPM;
+        else if (vr1_to_rpm > CP_MAX_SPEED_RPM)
+            vr1_to_rpm = CP_MAX_SPEED_RPM;
+
+        com_s2_ref_speed_rpm = vr1_to_rpm;
+
         ics_ui();                                                   /* user interface using ICS */
 
         clear_wdt();                                                /* watch dog timer clear */

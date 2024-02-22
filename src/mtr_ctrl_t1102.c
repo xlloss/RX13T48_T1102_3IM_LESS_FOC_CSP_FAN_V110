@@ -123,7 +123,7 @@ void led2_off(void)
 uint8 get_sw1(void)
 {
     uint8 u1_temp;
-    
+
     u1_temp = MTR_PORT_SW1;
     return (u1_temp);
 }
@@ -137,7 +137,7 @@ uint8 get_sw1(void)
 uint8 get_sw2(void)
 {
     uint8 u1_temp;
-    
+
     u1_temp = MTR_PORT_SW2;
     return (u1_temp);
 }
@@ -151,18 +151,18 @@ uint8 get_sw2(void)
 uint8 get_sw3(void)
 {
     uint8 u1_temp;
-    
+
     u1_temp = MTR_PORT_SW3;
     return (u1_temp);
 }
 
 /******************************************************************************
-* Function Name : get_vr1 
+* Function Name : get_vr1
 * Description   : get ref speed value
 * Arguments     : none
 * Return Value  : ref speed value
 ******************************************************************************/
-uint16 get_vr1(void)
+uint16 get_speed_adc(void)
 {
     uint16 u2_ref_speed_ad;
 
