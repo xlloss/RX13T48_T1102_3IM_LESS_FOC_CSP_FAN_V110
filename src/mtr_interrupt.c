@@ -164,9 +164,13 @@ clrpsw_i();
 setpsw_i();
 
 #if ADC_WORKAROUND
-    g_f4_iu_ad = g_f4_iu_ad / 1000;
-    g_f4_iv_ad = g_f4_iv_ad / 1000;
-    g_f4_iw_ad = g_f4_iw_ad / 1000;
+    g_f4_iu_ad = g_f4_iu_ad - 2016;
+    g_f4_iv_ad = g_f4_iv_ad - 2016;
+    g_f4_iw_ad = g_f4_iw_ad - 2016;
+
+    g_f4_iu_ad = (g_f4_iu_ad * (4.00f / 4095.0f));
+    g_f4_iv_ad = (g_f4_iv_ad * (8.00f / 4095.0f));
+    g_f4_iw_ad = (g_f4_iw_ad * (10.0f / 4095.0f));
 #else
     g_f4_iu_ad = g_f4_iu_ad - MTR_ADC_SCALING;
     g_f4_iv_ad = g_f4_iv_ad - MTR_ADC_SCALING;
@@ -334,7 +338,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.5f * g_f4_vdc_ad;
+    g_f4_inv_limit = 0.13f * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {
