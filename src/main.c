@@ -82,7 +82,7 @@ float32  g_f4_ref_speed_ad;                 /* ref speed value[digit] */
 int16    g_s2_ref_speed_rpm;                /* ref speed value[rpm]   */
 int16    com_s2_get_vr1;
 float32  com_f4_vr1_to_rpm;
-float32  vr1_to_rpm;
+float32  vr1_to_rpm, vr1_to_rpm_old;
 static void       ics_ui(void);
 static void       software_init(void);
 
@@ -129,8 +129,13 @@ setpsw_i();
         else if (vr1_to_rpm > CP_MAX_SPEED_RPM)
             vr1_to_rpm = CP_MAX_SPEED_RPM;
 
-        com_s2_ref_speed_rpm = vr1_to_rpm;
+        if (vr1_to_rpm_old != vr1_to_rpm) {
+            vr1_to_rpm_old = vr1_to_rpm;
+            com_s2_ref_speed_rpm = vr1_to_rpm;
 
+            com_s2_enable_write = 1;
+            g_s2_enable_write = 1;
+        }
         com_s2_mode_system = get_motor_enable();
         ics_ui();                                                   /* user interface using ICS */
 
@@ -167,6 +172,7 @@ void ics_ui(void)
     /***** When com_s2_enable_sw and g_s2_enable_sw are same value, rewrite enable. *****/
     if (com_s2_enable_write == g_s2_enable_write)
     {
+        com_s2_enable_write = 0;
         /* rotation direction */
         if(R_MTR_GetDir() != com_s2_direction)
         {
@@ -334,6 +340,7 @@ void software_init(void)
     g_u1_err_reset_sw_state        = SW_OFF;
     g_f4_ref_speed_ad              = 0;
     g_s2_ref_speed_rpm             = 0;
+    vr1_to_rpm_old                 = 0;
 }
 
 
