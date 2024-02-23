@@ -131,6 +131,7 @@ setpsw_i();
 
         com_s2_ref_speed_rpm = vr1_to_rpm;
 
+        com_s2_mode_system = get_motor_enable();
         ics_ui();                                                   /* user interface using ICS */
 
         clear_wdt();                                                /* watch dog timer clear */

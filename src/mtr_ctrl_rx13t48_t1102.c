@@ -134,9 +134,8 @@ void mtr_init_io_port(void)
     PORT7.PDR.BIT.B5 = 1;                               /* output mode for Vn */
     PORT7.PDR.BIT.B6 = 1;                               /* output mode for Wn */
 
-    PORTB.PODR.BIT.B2 = 0;                              /* gate for preventing the inrush current = "L" */
     PORTB.PODR.BIT.B3 = 0;                              /* PFC_G1 = "L" */
-    PORTB.PDR.BIT.B2 = 1;                               /* output mode */
+    PORTB.PDR.BIT.B2 = 0;                               /* EN_IN input mode */
     PORTB.PDR.BIT.B3 = 1;                               /* output mode */
 
     /*************** unused ***************/

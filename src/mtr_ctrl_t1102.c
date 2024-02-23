@@ -56,19 +56,31 @@ void R_MTR_ChargeCapacitor(void)
         mtr_get_iuiviwvdc(&g_f4_iu_ad, &g_f4_iv_ad, &g_f4_iw_ad, &g_f4_vdc_ad);
         g_f4_vdc_ad = g_f4_vdc_ad * MTR_VDC_SCALING;
     }
-    ic_gate_on();
+    /* ic_gate_on(); */
 }
 
 /******************************************************************************
-* Function Name : ic_gate_on
-* Description   : Turn on gate for preventing the inrush current
+* Function Name : motor_enable
+* Description   : turn on  motor: enable 1
+*                 turn off motor: enable 0
 * Arguments     : none
 * Return Value  : none
 ******************************************************************************/
-void ic_gate_on(void)
+uint8 get_motor_enable(void)
 {
-    MTR_PORT_IC_GATE = MTR_IC_GATE_ON;
+    uint8 u1_temp;
+
+    u1_temp = MTR_ENABLE;
+    return !u1_temp;
 }
+
+uint8 get_motor_status(void)
+{
+    uint8 u1_temp;
+
+    u1_temp = MTR_ENABLE;
+    return u1_temp;
+ }
 
 /******************************************************************************
 * Function Name : led1_on
