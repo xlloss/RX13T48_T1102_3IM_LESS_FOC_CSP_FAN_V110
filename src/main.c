@@ -84,6 +84,8 @@ int16    com_s2_get_vr1;
 float32  com_f4_vr1_to_rpm;
 float32  vr1_to_rpm, vr1_to_rpm_old;
 uint8    motor_dir, motor_dir_old;
+int16    boot_slow_start;
+float32  vdc_ad_k;
 static void       ics_ui(void);
 static void       software_init(void);
 
@@ -125,6 +127,19 @@ setpsw_i();
     /*** main routine ***/
     while (1)
     {
+        /*
+         *  g_f4_inv_limit gain
+         *      VDC_AD_K_2 - stage 0 -> very   slow  : avoid motor jitter
+         *      VDC_AD_K_1 - stage 1 -> middle slow  : smooth motor start before normal start
+         *      VDC_AD_K_0 - stage 0 -> normal start
+         */
+        if (boot_slow_start == 0)
+            vdc_ad_k = VDC_AD_K_0;
+        else if (boot_slow_start > 0 && boot_slow_start < (SLOW_START_TIME / 2))
+            vdc_ad_k = VDC_AD_K_1;
+        else
+            vdc_ad_k = VDC_AD_K_2;
+
         vr1_to_rpm = ((get_speed_adc() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
         if (vr1_to_rpm < CP_MIN_SPEED_RPM)
             vr1_to_rpm = CP_MIN_SPEED_RPM;
@@ -355,6 +370,8 @@ void software_init(void)
     g_s2_ref_speed_rpm             = 0;
     vr1_to_rpm_old                 = 0;
     motor_dir_old                  = 0;
+    boot_slow_start                = SLOW_START_TIME;
+    vdc_ad_k                       = VDC_AD_K_2;
 }
 
 

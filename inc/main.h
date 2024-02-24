@@ -73,6 +73,10 @@
 
 #define ADC_WORKAROUND            1
 #define ADC_BIT_N 12
+#define SLOW_START_TIME 6000
+#define VDC_AD_K_0 0.15           /* current 2.5 AMP */
+#define VDC_AD_K_1 0.10           /* current 1.5 AMP */
+#define VDC_AD_K_2 0.05           /* current 0.5 AMP */
 /******************************************************************************
 * Private global functions
 ******************************************************************************/

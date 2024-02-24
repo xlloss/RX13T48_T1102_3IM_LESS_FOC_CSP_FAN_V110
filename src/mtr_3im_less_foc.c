@@ -141,6 +141,8 @@ static uint8      mtr_act_reset(uint8 u1_state);
 static uint8      mtr_act_error(uint8 u1_state);
 static uint8      mtr_act_none(uint8 u1_state);
 
+extern uint16     boot_slow_start;
+extern float32    vdc_ad_k;
 static const volatile uint8 g_u1_def_state[MTR_SIZE_EVENT][MTR_SIZE_STATE] = {
 /*    state              0:MTR_MODE_STOP, 1:MTR_MODE_RUN,  2:MTR_MODE_ERROR */
 /* event   */
@@ -254,7 +256,8 @@ static uint8 mtr_act_reset(uint8 u1_state)
     g_u2_run_mode = MTR_BOOT_MODE;
     g_u2_ctrl_mode = MTR_OPENLOOP_MODE;
     g_u1_error_status = 0;
-
+    boot_slow_start = SLOW_START_TIME;
+    vdc_ad_k        = VDC_AD_K_2;
 /****** for ICS ******/
     g_u1_cnt_ics = 0;
 /*********************/
@@ -486,6 +489,8 @@ static void mtr_stop_init(void)
     g_f4_modv = 0;
     g_f4_modw = 0;
     g_u2_cnt_id_const = 0;
+    boot_slow_start = SLOW_START_TIME;
+    vdc_ad_k = VDC_AD_K_2;
 }
 
 /******************************************************************************
@@ -614,7 +619,7 @@ void mtr_set_variables(void)
 
     /* voltage drop caused by dead time and Vce */
      g_f4_voltage_drop = ics_input_buff.f4_voltage_drop;
-    
+
     /* voltage drop corrective gain */
      g_f4_voltage_drop_k = ics_input_buff.f4_voltage_drop_k;
 
@@ -687,7 +692,7 @@ void R_MTR_IcsInput(MTR_ICS_INPUT *ics_input)
 
     /* voltage drop caused by dead time and Vce */
     ics_input_buff.f4_voltage_drop = ics_input->f4_voltage_drop;
-    
+
     /* voltage drop corrective gain */
     ics_input_buff.f4_voltage_drop_k = ics_input->f4_voltage_drop_k;
 

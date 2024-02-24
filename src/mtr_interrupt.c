@@ -127,6 +127,8 @@ extern volatile MTR_PI_CTRL rotor_speed;            /* PI control structure */
 extern volatile MTR_PI_CTRL id_ACR;                 /* PI control structure */
 extern volatile MTR_PARAMETER mtr_p;                /* motor parameters and control parameters structure */
 
+extern int16 boot_slow_start;
+extern float32 vdc_ad_k;
 /******************************************************************************
 * Function Name : mtr_over_current_interrupt
 * Description   : POE0# interrupt
@@ -338,7 +340,7 @@ setpsw_i();
     /*=======================*/
     /*     limit vlotage     */
     /*=======================*/
-    g_f4_inv_limit = 0.13f * g_f4_vdc_ad;
+    g_f4_inv_limit = vdc_ad_k * g_f4_vdc_ad;
     f4_temp0 = fabsf(g_f4_refu);
     if (f4_temp0 > g_f4_inv_limit)
     {
@@ -464,6 +466,9 @@ setpsw_i();
     {
         g_f4_slip_k = mtr_p.f4_mtr_rr_lr / g_f4_id_ref;
     }
+
+    if (g_u1_mode_system == MTR_MODE_RUN)
+        boot_slow_start > 0 ? boot_slow_start-- : boot_slow_start;
 
     mtr_clear_cmt0_flag();
 }
