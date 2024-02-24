@@ -86,6 +86,7 @@ float32  vr1_to_rpm, vr1_to_rpm_old;
 uint8    motor_dir, motor_dir_old;
 int16    boot_slow_start;
 float32  vdc_ad_k;
+uint8    com_u1_ics_control_enable;
 static void       ics_ui(void);
 static void       software_init(void);
 
@@ -139,34 +140,35 @@ setpsw_i();
             vdc_ad_k = VDC_AD_K_1;
         else
             vdc_ad_k = VDC_AD_K_2;
+        if (!com_u1_ics_control_enable) {
+            vr1_to_rpm = ((get_speed_adc() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
+            if (vr1_to_rpm < CP_MIN_SPEED_RPM)
+                vr1_to_rpm = CP_MIN_SPEED_RPM;
+            else if (vr1_to_rpm > CP_MAX_SPEED_RPM)
+                vr1_to_rpm = CP_MAX_SPEED_RPM;
 
-        vr1_to_rpm = ((get_speed_adc() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
-        if (vr1_to_rpm < CP_MIN_SPEED_RPM)
-            vr1_to_rpm = CP_MIN_SPEED_RPM;
-        else if (vr1_to_rpm > CP_MAX_SPEED_RPM)
-            vr1_to_rpm = CP_MAX_SPEED_RPM;
+            if (vr1_to_rpm_old != vr1_to_rpm) {
+                vr1_to_rpm_old = vr1_to_rpm;
+                com_s2_ref_speed_rpm = vr1_to_rpm;
+                update_flg |= 1;
+            }
 
-        if (vr1_to_rpm_old != vr1_to_rpm) {
-            vr1_to_rpm_old = vr1_to_rpm;
-            com_s2_ref_speed_rpm = vr1_to_rpm;
-            update_flg |= 1;
+            motor_dir = get_motor_dir();
+            if (motor_dir_old != motor_dir) {
+                motor_dir_old = motor_dir;
+                com_s2_direction = motor_dir;
+                update_flg |= 1;
+                boot_slow_start = SLOW_START_TIME;
+                vdc_ad_k = VDC_AD_K_2;
+            }
+
+            if (update_flg) {
+                update_flg &= ~1;
+                com_s2_enable_write = 1;
+                g_s2_enable_write = 1;
+            }
+            com_s2_mode_system = get_motor_enable();
         }
-
-        motor_dir = get_motor_dir();
-        if (motor_dir_old != motor_dir) {
-            motor_dir_old = motor_dir;
-            com_s2_direction = motor_dir;
-            update_flg |= 1;
-            boot_slow_start = SLOW_START_TIME;
-            vdc_ad_k = VDC_AD_K_2;
-        }
-
-        if (update_flg) {
-            update_flg &= ~1;
-            com_s2_enable_write = 1;
-            g_s2_enable_write = 1;
-        }
-        com_s2_mode_system = get_motor_enable();
         ics_ui();                                                   /* user interface using ICS */
 
         clear_wdt();                                                /* watch dog timer clear */
@@ -374,6 +376,7 @@ void software_init(void)
     motor_dir_old                  = 0;
     boot_slow_start                = SLOW_START_TIME;
     vdc_ad_k                       = VDC_AD_K_2;
+    com_u1_ics_control_enable      = 0;
 }
 
 
