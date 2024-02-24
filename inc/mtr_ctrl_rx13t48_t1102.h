@@ -66,10 +66,13 @@
 
 #define     MTR_INPUT_V             (110*1.41421356)           /* input voltage [V] */
 #define     MTR_IC_GATE_ON_V        ((int32)(MTR_INPUT_V*0.8f))
+#define     MTR_VOLTAGE_DIV         (22 / (22 + 3000))         /* VD  VD voltage division proportion =>
+                                                                      (R33 / (R31 + R32 + R33))
+                                                               */
 #define     MTR_HALF_VDC            (MTR_INPUT_V/2.0f)         /* vdc/2 */
 #define     MTR_ADC_SCALING         (0x7FF)                    /* A/D offset */
 #define     MTR_CURRENT_SCALING     (100.0f/4095.0f)           /* for current scaling */
-#define     MTR_VDC_SCALING         (686.0f/4095.0f)           /* for vdc scaling */
+#define     MTR_VDC_SCALING         (5 / 4096.0f)              /* for vdc scaling */
 #define     MTR_IPMTEMPERATURE_SCALING (5.0f/4095.0f)          /* for IPM temperature scaling */
 
 #define     MTR_OVERCURRENT_LIMIT   (5.0f)                     /* over current limit [A] */

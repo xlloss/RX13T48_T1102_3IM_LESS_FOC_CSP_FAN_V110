@@ -51,7 +51,7 @@ extern volatile float32  g_f4_vdc_ad;
 ******************************************************************************/
 void R_MTR_ChargeCapacitor(void)
 {
-    while (g_f4_vdc_ad < MTR_IC_GATE_ON_V)
+    while (g_f4_vdc_ad < (MTR_IC_GATE_ON_V * MTR_VOLTAGE_DIV))
     {
         mtr_get_iuiviwvdc(&g_f4_iu_ad, &g_f4_iv_ad, &g_f4_iw_ad, &g_f4_vdc_ad);
         g_f4_vdc_ad = g_f4_vdc_ad * MTR_VDC_SCALING;
