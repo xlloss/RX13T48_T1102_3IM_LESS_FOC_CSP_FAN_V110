@@ -143,6 +143,9 @@ static uint8      mtr_act_none(uint8 u1_state);
 
 extern uint16     boot_slow_start;
 extern float32    vdc_ad_k;
+extern float32    vr1_to_rpm_old;
+extern uint8      motor_dir_old;
+
 static const volatile uint8 g_u1_def_state[MTR_SIZE_EVENT][MTR_SIZE_STATE] = {
 /*    state              0:MTR_MODE_STOP, 1:MTR_MODE_RUN,  2:MTR_MODE_ERROR */
 /* event   */
@@ -258,6 +261,9 @@ static uint8 mtr_act_reset(uint8 u1_state)
     g_u1_error_status = 0;
     boot_slow_start = SLOW_START_TIME;
     vdc_ad_k        = VDC_AD_K_2;
+    vr1_to_rpm_old = 0;
+    motor_dir_old = 0;
+
 /****** for ICS ******/
     g_u1_cnt_ics = 0;
 /*********************/
@@ -491,6 +497,8 @@ static void mtr_stop_init(void)
     g_u2_cnt_id_const = 0;
     boot_slow_start = SLOW_START_TIME;
     vdc_ad_k = VDC_AD_K_2;
+    vr1_to_rpm_old = 0;
+    motor_dir_old = 0;
 }
 
 /******************************************************************************
