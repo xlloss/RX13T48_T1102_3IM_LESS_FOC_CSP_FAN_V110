@@ -157,6 +157,8 @@ setpsw_i();
             motor_dir_old = motor_dir;
             com_s2_direction = motor_dir;
             update_flg |= 1;
+            boot_slow_start = SLOW_START_TIME;
+            vdc_ad_k = VDC_AD_K_2;
         }
 
         if (update_flg) {
