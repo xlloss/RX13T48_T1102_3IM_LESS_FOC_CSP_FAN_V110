@@ -127,16 +127,16 @@ void led2_off(void)
 }
 
 /******************************************************************************
-* Function Name : get_sw1
-* Description   : get drive switch status
+* Function Name : get_motor_dir
+* Description   : get motor direction switch status
 * Arguments     : none
-* Return Value  : drive switch status
+* Return Value  : direction switch status
 ******************************************************************************/
-uint8 get_sw1(void)
+uint8 get_motor_dir(void)
 {
     uint8 u1_temp;
 
-    u1_temp = MTR_PORT_SW1;
+    u1_temp = MTR_PORT_DIR;
     return (u1_temp);
 }
 

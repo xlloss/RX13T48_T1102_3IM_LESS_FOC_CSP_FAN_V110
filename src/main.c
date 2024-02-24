@@ -83,6 +83,7 @@ int16    g_s2_ref_speed_rpm;                /* ref speed value[rpm]   */
 int16    com_s2_get_vr1;
 float32  com_f4_vr1_to_rpm;
 float32  vr1_to_rpm, vr1_to_rpm_old;
+uint8    motor_dir, motor_dir_old;
 static void       ics_ui(void);
 static void       software_init(void);
 
@@ -108,6 +109,7 @@ uint32 dummy_ram;     /* Dummy ram for End of RAM */
 ******************************************************************************/
 void main(void)
 {
+    uint8_t update_flg = 0;
 clrpsw_i();                                                         /* interrupt disable */
     R_MTR_InitHardware();                                           /* initialize peripheral function */
     init_ui();                                                      /* initialize peripheral function for user interface */
@@ -132,7 +134,18 @@ setpsw_i();
         if (vr1_to_rpm_old != vr1_to_rpm) {
             vr1_to_rpm_old = vr1_to_rpm;
             com_s2_ref_speed_rpm = vr1_to_rpm;
+            update_flg |= 1;
+        }
 
+        motor_dir = get_motor_dir();
+        if (motor_dir_old != motor_dir) {
+            motor_dir_old = motor_dir;
+            com_s2_direction = motor_dir;
+            update_flg |= 1;
+        }
+
+        if (update_flg) {
+            update_flg &= ~1;
             com_s2_enable_write = 1;
             g_s2_enable_write = 1;
         }
@@ -341,6 +354,7 @@ void software_init(void)
     g_f4_ref_speed_ad              = 0;
     g_s2_ref_speed_rpm             = 0;
     vr1_to_rpm_old                 = 0;
+    motor_dir_old                  = 0;
 }
 
 

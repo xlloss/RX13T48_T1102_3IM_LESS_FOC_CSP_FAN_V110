@@ -39,7 +39,7 @@ void        led1_on(void);              /* turn on LED1 */
 void        led2_on(void);              /* turn on LED2 */
 void        led1_off(void);             /* turn off LED1 */
 void        led2_off(void);             /* turn off LED2 */
-uint8       get_sw1(void);              /* get sw1 */
+uint8       get_motor_dir(void);        /* get motor direction switch status */
 uint8       get_sw2(void);              /* get sw2 */
 uint8       get_sw3(void);              /* get sw3 */
 uint16      get_vr1(void);              /* get vr1 */

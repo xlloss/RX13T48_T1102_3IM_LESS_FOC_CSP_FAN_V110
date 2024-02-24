@@ -83,7 +83,7 @@
 #define     MTR_ENABLE              (PORTB.PIDR.BIT.B4)        /* turn on  motor: enable 0. turn off motor: enable 1 */
 #define     MTR_IC_GATE_ON          (1)                        /* active level of gate for preventing the inrush current */
 
-#define     MTR_PORT_SW1            (PORTB.PIDR.BIT.B5)        /* input port of SW1 */
+#define     MTR_PORT_DIR            (PORTB.PIDR.BIT.B5)        /* input port of motor direction ctrl */
 #define     MTR_PORT_SW2            (PORTB.PIDR.BIT.B4)        /* input port of SW2 */
 #define     MTR_PORT_SW3            (PORT7.PIDR.BIT.B0)        /* input port of SW3 */
 
