@@ -128,19 +128,20 @@ setpsw_i();
     /*** main routine ***/
     while (1)
     {
-        /*
-         *  g_f4_inv_limit gain
-         *      VDC_AD_K_2 - stage 0 -> very   slow  : avoid motor jitter
-         *      VDC_AD_K_1 - stage 1 -> middle slow  : smooth motor start before normal start
-         *      VDC_AD_K_0 - stage 0 -> normal start
-         */
-        if (boot_slow_start == 0)
-            vdc_ad_k = VDC_AD_K_0;
-        else if (boot_slow_start > 0 && boot_slow_start < (SLOW_START_TIME / 2))
-            vdc_ad_k = VDC_AD_K_1;
-        else
-            vdc_ad_k = VDC_AD_K_2;
         if (!com_u1_ics_control_enable) {
+            /*
+            *  g_f4_inv_limit gain
+            *      VDC_AD_K_2 - stage 0 -> very   slow  : avoid motor jitter
+            *      VDC_AD_K_1 - stage 1 -> middle slow  : smooth motor start before normal start
+            *      VDC_AD_K_0 - stage 0 -> normal start
+            */
+            if (boot_slow_start == 0)
+                vdc_ad_k = VDC_AD_K_0;
+            else if (boot_slow_start > 0 && boot_slow_start < (SLOW_START_TIME / 2))
+                vdc_ad_k = VDC_AD_K_1;
+            else
+                vdc_ad_k = VDC_AD_K_2;
+
             vr1_to_rpm = ((get_speed_adc() * CP_MAX_SPEED_RPM) >> ADC_BIT_N);
             if (vr1_to_rpm < CP_MIN_SPEED_RPM)
                 vr1_to_rpm = CP_MIN_SPEED_RPM;
